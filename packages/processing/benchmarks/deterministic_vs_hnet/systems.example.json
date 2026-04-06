@@ -1,0 +1,4 @@
+[
+  {"system_id": "deterministic_v1", "kind": "canonical_chunker", "version": "1.0.0"},
+  {"system_id": "hnet_overlay_v1", "kind": "chunk_overlay", "version": "0.3.2"}
+]

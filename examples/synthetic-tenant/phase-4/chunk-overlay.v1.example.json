@@ -1,0 +1,24 @@
+{
+  "overlay_id": "ovl_hnet_001",
+  "document_ir_id": "docir_mail_001",
+  "strategy": "hnet_dynamic_chunking",
+  "chunks": [
+    {
+      "chunk_id": "hnet_chunk_001",
+      "source_block_ids": ["blk_001", "blk_002"],
+      "score": 0.84,
+      "text": "Please review the attached transition plan and revised storage exports."
+    },
+    {
+      "chunk_id": "hnet_chunk_002",
+      "source_block_ids": ["blk_003"],
+      "score": 0.73,
+      "text": "The shared folder still depends on Google-native permissions."
+    }
+  ],
+  "provenance": {
+    "source_artifact_ids": ["artifact_mail_pdf_001"],
+    "normalizer_version": "norm-0.1.0",
+    "overlay_version": "hnet-0.3.2"
+  }
+}

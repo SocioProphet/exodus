@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/provider-account.v1.json",
+  "title": "ProviderAccount",
+  "type": "object",
+  "required": ["provider", "account_id", "scope", "status"],
+  "properties": {
+    "provider": {"type": "string", "enum": ["apple", "google", "microsoft", "other"]},
+    "account_id": {"type": "string"},
+    "display_name": {"type": ["string", "null"]},
+    "scope": {"type": "string", "enum": ["personal", "family", "tenant", "org"]},
+    "status": {"type": "string", "enum": ["active", "partial_exit", "exited", "unknown"]},
+    "notes": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

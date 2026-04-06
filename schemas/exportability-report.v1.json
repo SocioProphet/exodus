@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$id": "schemas/exportability-report.v1.json",
+  "required": [
+    "report_id",
+    "generated_at",
+    "collections"
+  ],
+  "properties": {
+    "report_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "collections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "collection_id",
+          "exportability_class",
+          "verification_path_exists"
+        ],
+        "properties": {
+          "collection_id": {
+            "type": "string"
+          },
+          "exportability_class": {
+            "type": "string",
+            "enum": [
+              "direct_exportable",
+              "exportable_with_limitations",
+              "metadata_only_visible",
+              "human_led_export_required",
+              "provider_blocked",
+              "unknown"
+            ]
+          },
+          "verification_path_exists": {
+            "type": "boolean"
+          },
+          "format_openness_after_export": {
+            "type": "string",
+            "enum": [
+              "open",
+              "mixed",
+              "closed",
+              "unknown"
+            ]
+          },
+          "common_blockers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

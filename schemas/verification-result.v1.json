@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$id": "schemas/verification-result.v1.json",
+  "required": [
+    "verification_id",
+    "claim",
+    "confidence"
+  ],
+  "properties": {
+    "verification_id": {
+      "type": "string"
+    },
+    "claim": {
+      "type": "string"
+    },
+    "evidence_artifact_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "verification_method": {
+      "type": "string"
+    },
+    "verified_by": {
+      "type": "string"
+    },
+    "verified_at": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "reproducible": {
+      "type": "boolean"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

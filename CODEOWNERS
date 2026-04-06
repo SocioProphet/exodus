@@ -1,0 +1,4 @@
+* @SocioProphet/core
+/docs/ @SocioProphet/architecture
+/schemas/ @SocioProphet/contracts
+/packages/ @SocioProphet/core

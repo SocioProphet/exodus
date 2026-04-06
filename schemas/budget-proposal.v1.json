@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$id": "schemas/budget-proposal.v1.json",
+  "required": [
+    "proposal_id",
+    "generated_at",
+    "scope",
+    "envelopes",
+    "waves"
+  ],
+  "properties": {
+    "proposal_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "object"
+    },
+    "envelopes": {
+      "type": "object",
+      "properties": {
+        "crawl": {
+          "type": "object"
+        },
+        "ingest": {
+          "type": "object"
+        },
+        "processing": {
+          "type": "object"
+        },
+        "retention": {
+          "type": "object"
+        }
+      }
+    },
+    "waves": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "phase_gate_recommendation": {
+      "type": "string"
+    }
+  }
+}

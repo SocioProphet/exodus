@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$id": "schemas/recommendation.v1.json",
+  "required": [
+    "recommendation_id",
+    "title",
+    "expected_eri_gain",
+    "effort_score",
+    "risk_score"
+  ],
+  "properties": {
+    "recommendation_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "expected_eri_gain": {
+      "type": "number"
+    },
+    "effort_score": {
+      "type": "number"
+    },
+    "risk_score": {
+      "type": "number"
+    },
+    "unlock_count": {
+      "type": "integer"
+    },
+    "evidence_prereqs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requires_human_action": {
+      "type": "boolean"
+    },
+    "sequence_position": {
+      "type": "integer"
+    },
+    "rationale": {
+      "type": "string"
+    }
+  }
+}

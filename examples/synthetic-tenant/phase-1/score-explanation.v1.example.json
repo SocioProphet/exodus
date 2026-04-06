@@ -1,0 +1,27 @@
+{
+  "score_id": "sesyn-001",
+  "scope_ref": "synthetic-household",
+  "eri": 37,
+  "archive_progress": 18,
+  "open_conversion_progress": 6,
+  "cutover_progress": 2,
+  "control_surface_reduction": 11,
+  "factors": [
+    {
+      "factor": "identity dependence remains high across Apple/Google/Microsoft",
+      "impact": -22
+    },
+    {
+      "factor": "Google Drive and Google Photos are exportable with verification paths",
+      "impact": 10
+    },
+    {
+      "factor": "Apple Photos byte volume is large and collaboration semantics remain partially trapped",
+      "impact": -14
+    },
+    {
+      "factor": "No full cutover has occurred yet",
+      "impact": -8
+    }
+  ]
+}

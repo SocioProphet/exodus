@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$id": "schemas/score-explanation.v1.json",
+  "required": [
+    "score_id",
+    "scope_ref",
+    "eri",
+    "factors"
+  ],
+  "properties": {
+    "score_id": {
+      "type": "string"
+    },
+    "scope_ref": {
+      "type": "string"
+    },
+    "eri": {
+      "type": "number"
+    },
+    "archive_progress": {
+      "type": "number"
+    },
+    "open_conversion_progress": {
+      "type": "number"
+    },
+    "cutover_progress": {
+      "type": "number"
+    },
+    "control_surface_reduction": {
+      "type": "number"
+    },
+    "factors": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

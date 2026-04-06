@@ -1,0 +1,57 @@
+{
+  "proposal_id": "bpsyn-001",
+  "generated_at": "2026-04-05T20:30:00Z",
+  "scope": {
+    "tenant": "synthetic-household"
+  },
+  "envelopes": {
+    "crawl": {
+      "relative_size": "small",
+      "notes": "metadata-first discovery over four accounts"
+    },
+    "ingest": {
+      "relative_size": "large",
+      "notes": "photo-heavy estate with multi-terabyte raw payloads"
+    },
+    "processing": {
+      "relative_size": "medium",
+      "notes": "metadata extraction and selective OCR first"
+    },
+    "retention": {
+      "relative_size": "large",
+      "notes": "long-lived raw archives plus warm derived analytics"
+    }
+  },
+  "waves": [
+    {
+      "wave": 1,
+      "focus": [
+        "google-drive",
+        "google-photos"
+      ],
+      "why": "strong exportability and high unlock value"
+    },
+    {
+      "wave": 2,
+      "focus": [
+        "apple1-photos",
+        "apple2-photos"
+      ],
+      "why": "large byte volume but high sovereignty gain"
+    },
+    {
+      "wave": 3,
+      "focus": [
+        "apple notes",
+        "microsoft mail/docs"
+      ],
+      "why": "higher workflow friction and manual handling"
+    }
+  ],
+  "assumptions": [
+    "metadata crawl precedes raw ingest",
+    "active collaboration collections stay hot longer",
+    "archive-only progress is tracked separately from cutover progress"
+  ],
+  "phase_gate_recommendation": "Proceed to Phase 2 planning approval; do not start full ingest until archival tiers and processing budget are approved."
+}

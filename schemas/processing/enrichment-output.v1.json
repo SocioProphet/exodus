@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/processing/enrichment-output.v1.json",
+  "title": "EnrichmentOutput",
+  "type": "object",
+  "required": [
+    "output_id",
+    "document_ir_id",
+    "run_id",
+    "output_type",
+    "items"
+  ],
+  "properties": {
+    "output_id": {"type": "string"},
+    "document_ir_id": {"type": "string"},
+    "run_id": {"type": "string"},
+    "output_type": {
+      "enum": [
+        "mention",
+        "relation",
+        "coreference_cluster",
+        "classification",
+        "sensitivity_label",
+        "entity_link",
+        "chunk_salience"
+      ]
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id"],
+        "properties": {
+          "id": {"type": "string"},
+          "confidence": {"type": ["number", "null"]},
+          "evidence_block_ids": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

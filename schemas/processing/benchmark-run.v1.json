@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/processing/benchmark-run.v1.json",
+  "title": "BenchmarkRun",
+  "type": "object",
+  "required": [
+    "benchmark_id",
+    "benchmark_family",
+    "corpus_manifest_ref",
+    "systems",
+    "metrics",
+    "results"
+  ],
+  "properties": {
+    "benchmark_id": {"type": "string"},
+    "benchmark_family": {"type": "string"},
+    "corpus_manifest_ref": {"type": "string"},
+    "systems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["system_id", "kind"],
+        "properties": {
+          "system_id": {"type": "string"},
+          "kind": {"type": "string"},
+          "version": {"type": ["string", "null"]}
+        },
+        "additionalProperties": true
+      }
+    },
+    "metrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "direction"],
+        "properties": {
+          "name": {"type": "string"},
+          "direction": {"enum": ["higher_is_better", "lower_is_better"]}
+        },
+        "additionalProperties": true
+      }
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["system_id", "metric_values"],
+        "properties": {
+          "system_id": {"type": "string"},
+          "metric_values": {"type": "object"},
+          "notes": {"type": ["string", "null"]}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

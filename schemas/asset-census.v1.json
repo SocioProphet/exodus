@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$id": "schemas/asset-census.v1.json",
+  "required": [
+    "census_id",
+    "generated_at",
+    "scope",
+    "collections"
+  ],
+  "properties": {
+    "census_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "object"
+    },
+    "collections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "collection_id",
+          "provider",
+          "domain",
+          "object_count",
+          "byte_count"
+        ],
+        "properties": {
+          "collection_id": {
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "account_id": {
+            "type": "string"
+          },
+          "domain": {
+            "type": "string"
+          },
+          "object_count": {
+            "type": "integer"
+          },
+          "byte_count": {
+            "type": "integer"
+          },
+          "native_format_ratio": {
+            "type": "number"
+          },
+          "open_format_ratio": {
+            "type": "number"
+          },
+          "age_buckets": {
+            "type": "object"
+          },
+          "temperature_proposal": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

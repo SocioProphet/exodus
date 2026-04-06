@@ -1,0 +1,88 @@
+{
+  "snapshot_id": "ptsyn-001",
+  "generated_at": "2026-04-05T20:30:00Z",
+  "providers": [
+    "Apple",
+    "Google",
+    "Microsoft"
+  ],
+  "accounts": [
+    {
+      "account_id": "apple-personal-1",
+      "provider": "Apple",
+      "domains": [
+        "photos",
+        "drive",
+        "notes",
+        "identity"
+      ]
+    },
+    {
+      "account_id": "apple-personal-2",
+      "provider": "Apple",
+      "domains": [
+        "photos",
+        "drive",
+        "notes",
+        "identity"
+      ]
+    },
+    {
+      "account_id": "google-personal",
+      "provider": "Google",
+      "domains": [
+        "photos",
+        "drive",
+        "mail",
+        "calendar",
+        "identity"
+      ]
+    },
+    {
+      "account_id": "m365-family",
+      "provider": "Microsoft",
+      "domains": [
+        "mail",
+        "storage",
+        "office_docs",
+        "identity"
+      ]
+    }
+  ],
+  "domains": [
+    "identity",
+    "photos",
+    "storage",
+    "notes",
+    "mail",
+    "calendar",
+    "office_docs"
+  ],
+  "shared_structures": [
+    {
+      "structure_id": "apple-shared-album-1",
+      "provider": "Apple",
+      "kind": "shared_album"
+    },
+    {
+      "structure_id": "gdrive-shared-1",
+      "provider": "Google",
+      "kind": "shared_folder"
+    }
+  ],
+  "control_surfaces": [
+    {
+      "provider": "Apple",
+      "kind": "adp_web_access_gate"
+    },
+    {
+      "provider": "Google",
+      "kind": "native_docs_collaboration"
+    },
+    {
+      "provider": "Microsoft",
+      "kind": "m365_identity_bundle"
+    }
+  ],
+  "confidence": "mixed"
+}

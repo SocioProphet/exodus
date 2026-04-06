@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$id": "schemas/dependency-graph.v1.json",
+  "required": [
+    "graph_id",
+    "nodes",
+    "edges"
+  ],
+  "properties": {
+    "graph_id": {
+      "type": "string"
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "from",
+          "to",
+          "dependency_type",
+          "severity"
+        ],
+        "properties": {
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "dependency_type": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high",
+              "critical"
+            ]
+          },
+          "export_only_viable": {
+            "type": "boolean"
+          },
+          "replacement_known": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

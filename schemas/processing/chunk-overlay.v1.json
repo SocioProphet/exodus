@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/processing/chunk-overlay.v1.json",
+  "title": "ChunkOverlay",
+  "type": "object",
+  "required": [
+    "overlay_id",
+    "document_ir_id",
+    "strategy",
+    "chunks",
+    "provenance"
+  ],
+  "properties": {
+    "overlay_id": {"type": "string"},
+    "document_ir_id": {"type": "string"},
+    "strategy": {"type": "string"},
+    "chunks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["chunk_id", "source_block_ids"],
+        "properties": {
+          "chunk_id": {"type": "string"},
+          "source_block_ids": {"type": "array", "items": {"type": "string"}},
+          "score": {"type": ["number", "null"]},
+          "text": {"type": ["string", "null"]}
+        },
+        "additionalProperties": true
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source_artifact_ids", "normalizer_version"],
+      "properties": {
+        "source_artifact_ids": {"type": "array", "items": {"type": "string"}},
+        "normalizer_version": {"type": "string"},
+        "overlay_version": {"type": ["string", "null"]}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

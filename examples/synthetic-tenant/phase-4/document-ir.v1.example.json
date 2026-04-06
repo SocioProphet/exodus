@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "document_id": "doc_google_contract_001",
+  "source_artifact_id": "artifact_google_drive_contract_pdf_001",
+  "title": "Master Services Agreement",
+  "language": "en",
+  "pages": [
+    {"page_number": 1, "width": 612, "height": 792},
+    {"page_number": 2, "width": 612, "height": 792}
+  ],
+  "blocks": [
+    {"block_id": "b1", "block_type": "heading", "page_number": 1, "text": "Master Services Agreement", "bbox": [40, 40, 560, 80]},
+    {"block_id": "b2", "block_type": "paragraph", "page_number": 1, "text": "This agreement is made between Example Corp and ClientCo.", "bbox": [40, 120, 560, 170]},
+    {"block_id": "b3", "block_type": "table", "page_number": 2, "text": null, "bbox": [40, 100, 560, 400]}
+  ],
+  "tables": [
+    {"table_id": "t1", "page_number": 2, "columns": ["Service", "Fee"]}
+  ],
+  "figures": [],
+  "provenance": {"ingestion_run_id": "run_phase4_001"}
+}

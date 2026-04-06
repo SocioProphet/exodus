@@ -1,0 +1,16 @@
+{
+  "output_id": "enrich_rel_001",
+  "document_ir_id": "docir_mail_001",
+  "run_id": "run_rel_001",
+  "output_type": "relation",
+  "items": [
+    {
+      "id": "rel_001",
+      "confidence": 0.91,
+      "predicate": "depends_on",
+      "subject": "Google Drive shared folder",
+      "object": "Google-native permission model",
+      "evidence_block_ids": ["blk_003"]
+    }
+  ]
+}

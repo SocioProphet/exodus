@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/progress-snapshot.v1.json",
+  "title": "ProgressSnapshot",
+  "type": "object",
+  "required": ["snapshot_id", "scope_type", "scope_id", "eri", "recorded_at"],
+  "properties": {
+    "snapshot_id": {"type": "string"},
+    "scope_type": {"type": "string", "enum": ["provider", "account", "domain", "tenant", "org", "user"]},
+    "scope_id": {"type": "string"},
+    "eri": {"type": "number", "minimum": 0, "maximum": 100},
+    "provider_control_surface": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+    "verified_local_copy_pct": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+    "open_format_pct": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+    "unresolved_blocker_count": {"type": ["integer", "null"], "minimum": 0},
+    "recorded_at": {"type": "string"}
+  },
+  "additionalProperties": false
+}

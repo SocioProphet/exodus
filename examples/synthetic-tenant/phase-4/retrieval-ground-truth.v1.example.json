@@ -1,0 +1,4 @@
+[
+  {"query_id": "q1", "relevant_block_ids": ["blk_003"]},
+  {"query_id": "q2", "relevant_block_ids": ["blk_001", "blk_002"]}
+]

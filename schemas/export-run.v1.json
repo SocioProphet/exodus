@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/export-run.v1.json",
+  "title": "ExportRun",
+  "type": "object",
+  "required": ["run_id", "provider", "account_id", "status", "started_at"],
+  "properties": {
+    "run_id": {"type": "string"},
+    "provider": {"type": "string"},
+    "account_id": {"type": "string"},
+    "asset_collection": {"type": ["string", "null"]},
+    "status": {"type": "string", "enum": ["running", "completed", "failed", "partial"]},
+    "started_at": {"type": "string"},
+    "completed_at": {"type": ["string", "null"]},
+    "raw_object_count": {"type": ["integer", "null"], "minimum": 0},
+    "hash_manifest_uri": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

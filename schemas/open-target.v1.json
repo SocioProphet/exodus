@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$id": "schemas/open-target.v1.json",
+  "required": [
+    "target_id",
+    "name",
+    "target_class"
+  ],
+  "properties": {
+    "target_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "target_class": {
+      "type": "string"
+    },
+    "scale": {
+      "type": "string"
+    },
+    "mobile_compatible": {
+      "type": "boolean"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

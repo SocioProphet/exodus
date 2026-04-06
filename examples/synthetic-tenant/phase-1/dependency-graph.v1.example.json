@@ -1,0 +1,39 @@
+{
+  "graph_id": "dgsyn-001",
+  "nodes": [
+    {
+      "id": "apple-personal-1",
+      "kind": "account"
+    },
+    {
+      "id": "apple1-photos",
+      "kind": "asset_collection"
+    },
+    {
+      "id": "google-drive",
+      "kind": "asset_collection"
+    },
+    {
+      "id": "google-docs-collab",
+      "kind": "workflow"
+    }
+  ],
+  "edges": [
+    {
+      "from": "apple1-photos",
+      "to": "apple-personal-1",
+      "dependency_type": "identity_control",
+      "severity": "high",
+      "export_only_viable": true,
+      "replacement_known": true
+    },
+    {
+      "from": "google-drive",
+      "to": "google-docs-collab",
+      "dependency_type": "collaboration_lock_in",
+      "severity": "critical",
+      "export_only_viable": false,
+      "replacement_known": false
+    }
+  ]
+}

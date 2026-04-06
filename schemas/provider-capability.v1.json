@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$id": "schemas/provider-capability.v1.json",
+  "required": [
+    "provider",
+    "domain",
+    "export_path_exists",
+    "replacement_maturity"
+  ],
+  "properties": {
+    "provider": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "export_path_exists": {
+      "type": "boolean"
+    },
+    "verification_path_exists": {
+      "type": "boolean"
+    },
+    "replacement_maturity": {
+      "type": "string",
+      "enum": [
+        "none",
+        "weak",
+        "partial",
+        "strong"
+      ]
+    },
+    "common_blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

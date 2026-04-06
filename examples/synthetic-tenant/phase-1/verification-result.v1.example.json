@@ -1,0 +1,13 @@
+{
+  "verification_id": "verifsyn-001",
+  "claim": "Google Drive is direct-exportable for the scoped personal account with known fidelity caveats.",
+  "evidence_artifact_refs": [
+    "artifact-google-drive-exportability-note-001"
+  ],
+  "verification_method": "provider capability review + planned fixture validation",
+  "verified_by": "system",
+  "verified_at": "2026-04-05T20:30:00Z",
+  "confidence": "medium",
+  "reproducible": true,
+  "notes": "Native document fidelity remains a known caveat and is modeled separately."
+}

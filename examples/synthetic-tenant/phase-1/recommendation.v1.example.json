@@ -1,0 +1,16 @@
+{
+  "recommendation_id": "recsyn-001",
+  "title": "Prioritize Google Drive and Google Photos crawl + export planning before Apple photo pull",
+  "expected_eri_gain": 9,
+  "effort_score": 4,
+  "risk_score": 3,
+  "unlock_count": 2,
+  "evidence_prereqs": [
+    "provider-topology-snapshot.v1",
+    "asset-census.v1",
+    "exportability-report.v1"
+  ],
+  "requires_human_action": true,
+  "sequence_position": 1,
+  "rationale": "These collections have clearer exportability paths and establish the first verified preservation fabric before larger Apple photo ingestion."
+}

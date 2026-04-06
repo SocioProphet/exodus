@@ -1,0 +1,73 @@
+{
+  "census_id": "acsyn-001",
+  "generated_at": "2026-04-05T20:30:00Z",
+  "scope": {
+    "tenant": "synthetic-household"
+  },
+  "collections": [
+    {
+      "collection_id": "apple1-photos",
+      "provider": "Apple",
+      "account_id": "apple-personal-1",
+      "domain": "photos",
+      "object_count": 120345,
+      "byte_count": 1500000000000,
+      "native_format_ratio": 0.65,
+      "open_format_ratio": 0.85,
+      "age_buckets": {
+        "<1y": 10000,
+        "1-5y": 50000,
+        ">5y": 60345
+      },
+      "temperature_proposal": "warm"
+    },
+    {
+      "collection_id": "apple2-photos",
+      "provider": "Apple",
+      "account_id": "apple-personal-2",
+      "domain": "photos",
+      "object_count": 60543,
+      "byte_count": 700000000000,
+      "native_format_ratio": 0.62,
+      "open_format_ratio": 0.83,
+      "age_buckets": {
+        "<1y": 5000,
+        "1-5y": 20000,
+        ">5y": 35543
+      },
+      "temperature_proposal": "cold"
+    },
+    {
+      "collection_id": "google-photos",
+      "provider": "Google",
+      "account_id": "google-personal",
+      "domain": "photos",
+      "object_count": 95000,
+      "byte_count": 1100000000000,
+      "native_format_ratio": 0.4,
+      "open_format_ratio": 0.92,
+      "age_buckets": {
+        "<1y": 7000,
+        "1-5y": 30000,
+        ">5y": 58000
+      },
+      "temperature_proposal": "warm"
+    },
+    {
+      "collection_id": "google-drive",
+      "provider": "Google",
+      "account_id": "google-personal",
+      "domain": "storage",
+      "object_count": 350000,
+      "byte_count": 900000000000,
+      "native_format_ratio": 0.3,
+      "open_format_ratio": 0.7,
+      "age_buckets": {
+        "<1y": 25000,
+        "1-5y": 120000,
+        ">5y": 205000
+      },
+      "temperature_proposal": "hot"
+    }
+  ]
+}

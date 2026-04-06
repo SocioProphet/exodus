@@ -1,0 +1,36 @@
+{
+  "report_id": "ersyn-001",
+  "generated_at": "2026-04-05T20:30:00Z",
+  "collections": [
+    {
+      "collection_id": "apple1-photos",
+      "exportability_class": "exportable_with_limitations",
+      "verification_path_exists": true,
+      "format_openness_after_export": "mixed",
+      "common_blockers": [
+        "shared album semantics",
+        "adp posture"
+      ]
+    },
+    {
+      "collection_id": "google-drive",
+      "exportability_class": "direct_exportable",
+      "verification_path_exists": true,
+      "format_openness_after_export": "mixed",
+      "common_blockers": [
+        "native docs fidelity",
+        "shared permissions"
+      ]
+    },
+    {
+      "collection_id": "m365-family-mail",
+      "exportability_class": "human_led_export_required",
+      "verification_path_exists": true,
+      "format_openness_after_export": "mixed",
+      "common_blockers": [
+        "identity coupling",
+        "shared mailbox workflow"
+      ]
+    }
+  ]
+}

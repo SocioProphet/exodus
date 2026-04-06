@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0.0",
+  "chunk_id": "chunk_001",
+  "document_id": "doc_google_contract_001",
+  "chunk_type": "paragraph",
+  "text": "This agreement is made between Example Corp and ClientCo.",
+  "source_block_ids": ["b2"],
+  "page_numbers": [1],
+  "adaptive_model": null,
+  "provenance": {"strategy": "deterministic_section_paragraph"}
+}

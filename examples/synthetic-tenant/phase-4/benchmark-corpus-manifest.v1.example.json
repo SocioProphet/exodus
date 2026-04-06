@@ -1,0 +1,10 @@
+{
+  "corpus_manifest_id": "corpus_chunking_001",
+  "family": "chunking",
+  "document_ir_ids": [
+    "docir_mail_001",
+    "docir_notes_001"
+  ],
+  "query_set_ref": "examples/synthetic-tenant/phase-4/retrieval-queries.v1.example.json",
+  "ground_truth_ref": "examples/synthetic-tenant/phase-4/retrieval-ground-truth.v1.example.json"
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$id": "schemas/cutover-event.v1.json",
+  "required": [
+    "cutover_id",
+    "scope_ref",
+    "cutover_at",
+    "status"
+  ],
+  "properties": {
+    "cutover_id": {
+      "type": "string"
+    },
+    "scope_ref": {
+      "type": "string"
+    },
+    "cutover_at": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planned",
+        "in_progress",
+        "completed",
+        "rolled_back"
+      ]
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

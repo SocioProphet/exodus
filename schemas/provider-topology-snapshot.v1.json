@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$id": "schemas/provider-topology-snapshot.v1.json",
+  "required": [
+    "snapshot_id",
+    "generated_at",
+    "providers",
+    "accounts",
+    "domains"
+  ],
+  "properties": {
+    "snapshot_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "providers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "accounts": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "domains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "shared_structures": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "control_surfaces": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low",
+        "mixed"
+      ]
+    }
+  }
+}

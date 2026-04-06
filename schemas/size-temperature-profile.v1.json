@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$id": "schemas/size-temperature-profile.v1.json",
+  "required": [
+    "profile_id",
+    "generated_at",
+    "collections"
+  ],
+  "properties": {
+    "profile_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "collections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "collection_id",
+          "byte_count",
+          "temperature"
+        ],
+        "properties": {
+          "collection_id": {
+            "type": "string"
+          },
+          "byte_count": {
+            "type": "integer"
+          },
+          "temperature": {
+            "type": "string",
+            "enum": [
+              "hot",
+              "warm",
+              "cold",
+              "archive"
+            ]
+          },
+          "retrieval_expectation": {
+            "type": "string"
+          },
+          "validation_state": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
