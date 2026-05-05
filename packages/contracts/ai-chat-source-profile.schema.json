@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.ai/exodus/0.1.0/ai-chat-source-profile.schema.json",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "specVersion",
+    "provider",
+    "surface",
+    "ingestMethods",
+    "preserveRawFirst",
+    "updatedAtUtc"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "kind": { "const": "AIChatSourceProfile" },
+    "specVersion": { "type": "string", "pattern": "^0\\.1\\.\\d+$" },
+    "provider": { "type": "string", "enum": ["openai", "anthropic", "google", "microsoft", "local", "other"] },
+    "surface": { "type": "string", "enum": ["chatgpt", "claude", "gemini", "copilot", "local-assistant", "other"] },
+    "ingestMethods": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["data-export", "workspace-export", "archive-folder", "html-export", "json-export", "jsonl-export", "markdown-export", "manual-import"] },
+      "minItems": 1
+    },
+    "expectedArtifacts": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "preserveRawFirst": { "type": "boolean" },
+    "attachmentsExpected": { "type": "boolean" },
+    "requiresRedactionReview": { "type": "boolean" },
+    "notes": { "type": "string" },
+    "updatedAtUtc": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}
