@@ -7,4 +7,4 @@ validate-examples:
 	python3 scripts/validate_examples.py
 
 validate-evidence-fabric-contracts:
-	python3 scripts/validate_evidence_fabric_contracts.py
+	python3 scripts/validate_exodus_evidence_fabric_all.py
