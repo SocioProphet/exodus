@@ -1,0 +1,42 @@
+{
+  "id": "urn:sp:exodus:provider-downgrade-plan:google-personal-001",
+  "kind": "ProviderDowngradePlan",
+  "specVersion": "0.1.0",
+  "planId": "google-personal-001",
+  "provider": "google",
+  "currentState": "paid-storage-plan-active",
+  "targetState": "minimal-account-retained-with-canonical-data-offloaded",
+  "planStatus": "ready",
+  "createdAtUtc": "2026-05-05T18:45:00Z",
+  "eligibilityRefs": [
+    "urn:sp:exodus:deletion-eligibility:wave-google-drive-001"
+  ],
+  "proofPackRefs": [
+    "urn:sp:exodus:proof-pack-summary:proof-pack-google-drive-001"
+  ],
+  "riskSummary": {
+    "dataLossRisk": "low",
+    "accountLockoutRisk": "medium",
+    "workflowBreakageRisk": "medium"
+  },
+  "steps": [
+    {
+      "stepId": "verify-proof-pack",
+      "description": "Verify proof pack, source alias report, blocked object report, and deletion eligibility record before provider downgrade.",
+      "status": "ready",
+      "evidenceRef": "urn:sp:exodus:proof-pack-summary:proof-pack-google-drive-001"
+    },
+    {
+      "stepId": "complete-cooling-off",
+      "description": "Wait for cooling-off window to complete before removing or downgrading provider storage commitments.",
+      "status": "pending",
+      "evidenceRef": "urn:sp:exodus:deletion-eligibility:wave-google-drive-001"
+    },
+    {
+      "stepId": "downgrade-storage-plan",
+      "description": "Downgrade provider storage only after all eligibility checks pass and user confirms the action.",
+      "status": "pending"
+    }
+  ],
+  "notes": "Provider downgrade is a guided user action. Exodus supplies proof and risk context but does not automatically delete or downgrade external accounts."
+}
