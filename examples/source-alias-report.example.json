@@ -1,0 +1,30 @@
+{
+  "id": "urn:sp:exodus:source-alias-report:wave-google-drive-001",
+  "kind": "SourceAliasReport",
+  "specVersion": "0.1.0",
+  "reportId": "source-alias-report-google-drive-001",
+  "migrationWaveId": "wave-google-drive-001",
+  "generatedAtUtc": "2026-05-05T17:25:00Z",
+  "aliases": [
+    {
+      "aliasType": "path",
+      "sourceLocator": "gdrive:/Case/File.txt",
+      "canonicalBlobRef": "urn:sp:evidence:blob:sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "provider": "google",
+      "surface": "google-drive",
+      "observedAtUtc": "2026-05-05T17:21:00Z"
+    },
+    {
+      "aliasType": "provider-id",
+      "sourceLocator": "gdrive:fileId=abc123",
+      "canonicalBlobRef": "urn:sp:evidence:blob:sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "provider": "google",
+      "surface": "google-drive",
+      "observedAtUtc": "2026-05-05T17:21:00Z"
+    }
+  ],
+  "uniqueBlobCount": 1,
+  "aliasCount": 2,
+  "duplicateAliasCount": 1,
+  "notes": "Two source aliases resolve to one canonical blob."
+}
