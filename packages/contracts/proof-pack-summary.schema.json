@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.ai/exodus/0.1.0/proof-pack-summary.schema.json",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "specVersion",
+    "proofPackId",
+    "migrationWaveId",
+    "status",
+    "generatedAtUtc",
+    "contents"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "kind": { "const": "ProofPackSummary" },
+    "specVersion": { "type": "string", "pattern": "^0\\.1\\.\\d+$" },
+    "proofPackId": { "type": "string" },
+    "migrationWaveId": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "generated", "validated", "blocked", "superseded"]
+    },
+    "generatedAtUtc": { "type": "string", "format": "date-time" },
+    "contents": {
+      "type": "object",
+      "required": ["manifestRefs", "validationRefs", "sourceAliasReport", "mirrorParityReport"],
+      "properties": {
+        "manifestRefs": { "type": "array", "items": { "type": "string" } },
+        "validationRefs": { "type": "array", "items": { "type": "string" } },
+        "sourceAliasReport": { "type": "string" },
+        "mirrorParityReport": { "type": "string" },
+        "blockedObjectReport": { "type": "string" },
+        "openFormatConversionReport": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "eligibility": {
+      "type": "object",
+      "required": ["sourceDeletionEligible", "providerDowngradeEligible"],
+      "properties": {
+        "sourceDeletionEligible": { "type": "boolean" },
+        "providerDowngradeEligible": { "type": "boolean" },
+        "reason": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}
