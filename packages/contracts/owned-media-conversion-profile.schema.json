@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.ai/exodus/0.1.0/owned-media-conversion-profile.schema.json",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "specVersion",
+    "profileName",
+    "mediaKind",
+    "rawCustodyRequired",
+    "attestationRequired",
+    "distributionClearanceRequired",
+    "preferredAction",
+    "updatedAtUtc"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "kind": { "const": "OwnedMediaConversionProfile" },
+    "specVersion": { "type": "string", "pattern": "^0\\.1\\.\\d+$" },
+    "profileName": { "type": "string" },
+    "mediaKind": {
+      "type": "string",
+      "enum": ["audio", "video", "playlist", "metadata", "mixed"]
+    },
+    "rawCustodyRequired": { "type": "boolean" },
+    "attestationRequired": { "type": "boolean" },
+    "distributionClearanceRequired": { "type": "boolean" },
+    "preferredAction": {
+      "type": "string",
+      "enum": ["copy", "remux", "transcode", "metadata-only", "block"]
+    },
+    "targetContainer": { "type": "string" },
+    "targetCodec": { "type": "string" },
+    "metadataSidecar": { "type": "string" },
+    "subtitleTarget": { "type": "string" },
+    "budgetClass": {
+      "type": "string",
+      "enum": ["custody-only", "playback-ready", "archive-plus-portable"]
+    },
+    "failureStates": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "metadata-only",
+          "blocked-access-control",
+          "blocked-unsupported-format",
+          "blocked-storage-budget",
+          "failed-tool-error"
+        ]
+      }
+    },
+    "notes": { "type": "string" },
+    "updatedAtUtc": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}
