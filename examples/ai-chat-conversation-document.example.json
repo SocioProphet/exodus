@@ -1,0 +1,36 @@
+{
+  "id": "urn:sp:exodus:ai-chat-conversation-document:chatgpt-conversation-001",
+  "kind": "AIChatConversationDocument",
+  "specVersion": "0.1.0",
+  "provider": "openai",
+  "conversationId": "chatgpt-conversation-001",
+  "title": "Evidence fabric planning session",
+  "createdAtUtc": "2026-05-05T15:00:00Z",
+  "updatedAtUtc": "2026-05-05T15:30:00Z",
+  "participantRoles": ["user", "assistant"],
+  "messageCount": 42,
+  "characterCount": 120000,
+  "attachmentRefs": [
+    "urn:sp:evidence:blob:sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+  ],
+  "rawEvidenceRefs": [
+    "urn:sp:evidence:blob:sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+  ],
+  "documentDerivatives": [
+    {
+      "format": "markdown",
+      "ref": "urn:sp:exodus:chat-doc:chatgpt-conversation-001-md"
+    },
+    {
+      "format": "jsonl",
+      "ref": "urn:sp:exodus:chat-doc:chatgpt-conversation-001-jsonl"
+    },
+    {
+      "format": "chunk-manifest",
+      "ref": "urn:sp:exodus:chunk-manifest:chatgpt-conversation-001"
+    }
+  ],
+  "redactionStatus": "review-required",
+  "searchStatus": "queued",
+  "notes": "Conversation imported as a historical document record; model outputs are not treated as verified facts."
+}
