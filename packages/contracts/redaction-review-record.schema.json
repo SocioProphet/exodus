@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.ai/exodus/0.1.0/redaction-review-record.schema.json",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "specVersion",
+    "reviewId",
+    "targetRef",
+    "reviewStatus",
+    "reviewedAtUtc",
+    "findings"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "kind": { "const": "RedactionReviewRecord" },
+    "specVersion": { "type": "string", "pattern": "^0\\.1\\.\\d+$" },
+    "reviewId": { "type": "string" },
+    "targetRef": { "type": "string" },
+    "reviewStatus": { "type": "string", "enum": ["not-reviewed", "review-required", "redacted", "safe-for-export", "blocked"] },
+    "reviewedAtUtc": { "type": "string", "format": "date-time" },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["findingType", "severity"],
+        "properties": {
+          "findingType": { "type": "string", "enum": ["secret", "personal-data", "third-party-data", "legal-sensitive", "medical-sensitive", "financial-sensitive", "location", "other"] },
+          "severity": { "type": "string", "enum": ["info", "warn", "error"] },
+          "fieldRef": { "type": "string" },
+          "message": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "redactedDerivativeRef": { "type": "string" },
+    "rawPreserved": { "type": "boolean" },
+    "exportAllowed": { "type": "boolean" },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}
