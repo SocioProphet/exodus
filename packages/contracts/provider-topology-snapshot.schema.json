@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.ai/exodus/0.1.0/provider-topology-snapshot.schema.json",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "specVersion",
+    "provider",
+    "snapshotId",
+    "discoveredAtUtc",
+    "accounts",
+    "surfaces",
+    "confidence"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "kind": { "const": "ProviderTopologySnapshot" },
+    "specVersion": { "type": "string", "pattern": "^0\\.1\\.\\d+$" },
+    "provider": { "type": "string" },
+    "snapshotId": { "type": "string" },
+    "discoveredAtUtc": { "type": "string", "format": "date-time" },
+    "accounts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["accountRef", "accountType", "status"],
+        "properties": {
+          "accountRef": { "type": "string" },
+          "accountType": { "type": "string" },
+          "status": { "type": "string", "enum": ["active", "inactive", "unknown", "blocked"] }
+        },
+        "additionalProperties": false
+      }
+    },
+    "surfaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["surfaceId", "surfaceType", "discoveryStatus"],
+        "properties": {
+          "surfaceId": { "type": "string" },
+          "surfaceType": { "type": "string" },
+          "objectEstimate": { "type": "integer", "minimum": 0 },
+          "byteEstimate": { "type": "integer", "minimum": 0 },
+          "discoveryStatus": { "type": "string", "enum": ["discovered", "partial", "blocked", "not-found", "unknown"] },
+          "blockerRefs": { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": false
+      }
+    },
+    "exportMethods": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "confidence": {
+      "type": "object",
+      "required": ["score", "gaps"],
+      "properties": {
+        "score": { "type": "number", "minimum": 0, "maximum": 1 },
+        "gaps": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}
