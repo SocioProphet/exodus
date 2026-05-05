@@ -1,0 +1,37 @@
+{
+  "id": "urn:sp:exodus:owned-media-source-profile:local-music-video",
+  "kind": "OwnedMediaSourceProfile",
+  "specVersion": "0.1.0",
+  "provider": "local",
+  "surface": "local-music-video-library",
+  "mediaKinds": ["music", "video", "playlist", "voice-memo", "home-movie"],
+  "ingestMethods": ["local-library", "external-disk", "archive-folder", "device-export"],
+  "preferredTargets": {
+    "audioArchival": "flac",
+    "audioPortable": "opus",
+    "videoArchivalContainer": "mkv",
+    "videoCompatibilityContainer": "mp4",
+    "metadataSidecar": "json"
+  },
+  "expectedMetadata": [
+    "title",
+    "artist-or-creator",
+    "album-or-project",
+    "duration",
+    "codec",
+    "container",
+    "bitrate",
+    "sample-rate",
+    "resolution",
+    "frame-rate",
+    "artwork-ref",
+    "playlist-membership",
+    "original-path",
+    "checksum",
+    "conversion-profile"
+  ],
+  "preserveRawFirst": true,
+  "drmPolicy": "blocked-or-metadata-only",
+  "notes": "Owned media is preserved raw before optional Linux-ready derivative conversion.",
+  "updatedAtUtc": "2026-05-05T12:30:00Z"
+}
