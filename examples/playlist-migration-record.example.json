@@ -1,0 +1,36 @@
+{
+  "id": "urn:sp:exodus:playlist-migration:local-favorites-001",
+  "kind": "PlaylistMigrationRecord",
+  "specVersion": "0.1.0",
+  "provider": "local",
+  "playlistId": "local-favorites-001",
+  "title": "Local Favorites",
+  "playlistType": "music",
+  "sourceLocator": "file:///Music/Playlists/Favorites.m3u8",
+  "rawEvidenceRef": "urn:sp:evidence:blob:sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "entries": [
+    {
+      "position": 0,
+      "entryStatus": "resolved",
+      "originalLocator": "file:///Music/Track01.flac",
+      "canonicalBlobRef": "urn:sp:evidence:blob:sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "title": "Track 01",
+      "artistOrCreator": "Local Artist",
+      "durationSeconds": 180
+    },
+    {
+      "position": 1,
+      "entryStatus": "missing-source",
+      "originalLocator": "file:///Music/MissingTrack.flac",
+      "title": "Missing Track"
+    }
+  ],
+  "outputPlaylistRefs": [
+    "urn:sp:exodus:playlist-output:local-favorites-001-m3u8"
+  ],
+  "unresolvedEntryCount": 1,
+  "duplicateEntryCount": 0,
+  "proofPackRef": "urn:sp:exodus:proof-pack-summary:proof-pack-owned-media-001",
+  "notes": "Original order preserved; unresolved entry retained as blocker.",
+  "generatedAtUtc": "2026-05-05T14:55:00Z"
+}
