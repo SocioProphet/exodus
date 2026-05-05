@@ -1,0 +1,25 @@
+{
+  "id": "urn:sp:exodus:owned-media-attestation:local-track-001",
+  "kind": "OwnedMediaAttestationRecord",
+  "specVersion": "0.1.0",
+  "mediaRef": "urn:sp:evidence:blob:sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "sourceProfileRef": "urn:sp:exodus:owned-media-source-profile:local-music-video",
+  "acquisitionRunRef": "urn:sp:evidence:acquisition:RUN0001",
+  "attestingSubjectRef": "urn:sp:subject:user-local-owner",
+  "attestationScope": "personal-use",
+  "attestationStatus": "captured",
+  "evidenceRefs": [
+    "urn:sp:evidence:source-alias:local-music-folder",
+    "urn:sp:evidence:metadata:library-export-001"
+  ],
+  "contextRefs": [
+    "urn:sp:exodus:migration-wave:wave-owned-media-001"
+  ],
+  "privateUseAllowed": true,
+  "localDerivativeAllowed": true,
+  "publicDistributionStatus": "separate-clearance-required",
+  "accessControlStatus": "none-observed",
+  "attestationTextDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "notes": "User attested personal ownership or authorization for private migration and local Linux playback derivatives. Public distribution remains separately gated.",
+  "attestedAtUtc": "2026-05-05T13:20:00Z"
+}
