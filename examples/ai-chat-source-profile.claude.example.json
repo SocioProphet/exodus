@@ -1,0 +1,19 @@
+{
+  "id": "urn:sp:exodus:ai-chat-source-profile:claude",
+  "kind": "AIChatSourceProfile",
+  "specVersion": "0.1.0",
+  "provider": "anthropic",
+  "surface": "claude",
+  "ingestMethods": ["data-export", "workspace-export", "archive-folder", "json-export", "markdown-export"],
+  "expectedArtifacts": [
+    "conversation-history",
+    "project-or-workspace-context",
+    "attachments-or-generated-files",
+    "account-export-metadata"
+  ],
+  "preserveRawFirst": true,
+  "attachmentsExpected": true,
+  "requiresRedactionReview": true,
+  "notes": "Claude/Anthropic export is treated as an ingress archive for conversation-as-document migration.",
+  "updatedAtUtc": "2026-05-05T15:41:00Z"
+}
