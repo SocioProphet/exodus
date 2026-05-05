@@ -1,0 +1,20 @@
+{
+  "id": "urn:sp:exodus:redaction-review:chatgpt-conversation-001",
+  "kind": "RedactionReviewRecord",
+  "specVersion": "0.1.0",
+  "reviewId": "chatgpt-conversation-001-redaction-review",
+  "targetRef": "urn:sp:exodus:ai-chat-conversation-document:chatgpt-conversation-001",
+  "reviewStatus": "review-required",
+  "reviewedAtUtc": "2026-05-05T18:15:00Z",
+  "findings": [
+    {
+      "findingType": "personal-data",
+      "severity": "warn",
+      "fieldRef": "messages[*].content",
+      "message": "Conversation may contain personal context and should be reviewed before export."
+    }
+  ],
+  "rawPreserved": true,
+  "exportAllowed": false,
+  "notes": "Raw conversation remains private until redaction review is complete."
+}
