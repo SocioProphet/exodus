@@ -1,0 +1,14 @@
+{
+  "id": "urn:sp:exodus:conversation-reuse-policy:chatgpt-conversation-001",
+  "kind": "ConversationReusePolicy",
+  "specVersion": "0.1.0",
+  "sourceConversationRef": "urn:sp:exodus:ai-chat-conversation-document:chatgpt-conversation-001",
+  "reuseMode": "citation-source",
+  "redactionRequired": true,
+  "citationRequired": true,
+  "treatModelOutputsAsHistorical": true,
+  "allowedTargets": ["exodus-dashboard", "sourceos-chat", "workspace-search", "knowledge-context"],
+  "blockedReasons": [],
+  "notes": "Imported chat may be cited as historical context after redaction review. Assistant outputs are not treated as verified facts.",
+  "updatedAtUtc": "2026-05-05T16:25:00Z"
+}
