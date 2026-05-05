@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.ai/exodus/0.1.0/blocked-object-report.schema.json",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "specVersion",
+    "reportId",
+    "migrationWaveId",
+    "generatedAtUtc",
+    "blockedObjects"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "kind": { "const": "BlockedObjectReport" },
+    "specVersion": { "type": "string", "pattern": "^0\\.1\\.\\d+$" },
+    "reportId": { "type": "string" },
+    "migrationWaveId": { "type": "string" },
+    "generatedAtUtc": { "type": "string", "format": "date-time" },
+    "blockedObjects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["sourceLocator", "blockerCode", "severity"],
+        "properties": {
+          "sourceLocator": { "type": "string" },
+          "canonicalBlobRef": { "type": "string" },
+          "provider": { "type": "string" },
+          "surface": { "type": "string" },
+          "blockerCode": { "type": "string" },
+          "severity": { "type": "string", "enum": ["info", "warn", "error"] },
+          "message": { "type": "string" },
+          "nextAction": { "type": "string" },
+          "metadataOnly": { "type": "boolean" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "blockedCount": { "type": "integer", "minimum": 0 },
+    "metadataOnlyCount": { "type": "integer", "minimum": 0 },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}
