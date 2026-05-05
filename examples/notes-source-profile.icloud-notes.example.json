@@ -1,0 +1,23 @@
+{
+  "id": "urn:sp:exodus:notes-source-profile:icloud-notes",
+  "kind": "NotesSourceProfile",
+  "specVersion": "0.1.0",
+  "provider": "apple",
+  "surface": "icloud-notes",
+  "ingestMethods": ["web-export", "trusted-device-collector", "archive-bundle", "pdf-export", "screenshot-capture"],
+  "expectedMetadata": [
+    "folder-path",
+    "title",
+    "body-text",
+    "attachment-refs",
+    "locked-status",
+    "share-status",
+    "created-time",
+    "modified-time"
+  ],
+  "attachmentSupport": true,
+  "collaborationMetadata": true,
+  "preserveRawFirst": true,
+  "notes": "Apple Notes and iCloud Notes are treated as Apple ingress surfaces only.",
+  "updatedAtUtc": "2026-05-05T05:30:00Z"
+}
