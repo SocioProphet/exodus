@@ -1,0 +1,27 @@
+{
+  "id": "urn:sp:exodus:migration-wave:wave-google-drive-001",
+  "kind": "MigrationWavePlan",
+  "specVersion": "0.1.0",
+  "provider": "google-drive",
+  "waveId": "wave-google-drive-001",
+  "scope": {
+    "sourceType": "google-drive",
+    "selection": "folder:case-001",
+    "estimatedObjectCount": 1500,
+    "estimatedBytes": 1073741824
+  },
+  "target": {
+    "objectStore": "seaweedfs-s3",
+    "metadataStore": "postgres",
+    "landingPrefix": "raw/sha256"
+  },
+  "policy": {
+    "deleteSourceAfterIngest": false,
+    "requiresMirrorParity": true,
+    "requiresManifestParity": true,
+    "requiresCoolingOff": true,
+    "coolingOffDays": 30
+  },
+  "parserRoutes": ["document", "text-log", "metadata"],
+  "createdAtUtc": "2026-05-05T05:00:00Z"
+}
