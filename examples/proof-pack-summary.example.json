@@ -1,0 +1,22 @@
+{
+  "id": "urn:sp:exodus:proof-pack-summary:proof-pack-google-drive-001",
+  "kind": "ProofPackSummary",
+  "specVersion": "0.1.0",
+  "proofPackId": "proof-pack-google-drive-001",
+  "migrationWaveId": "wave-google-drive-001",
+  "status": "validated",
+  "generatedAtUtc": "2026-05-05T05:15:00Z",
+  "contents": {
+    "manifestRefs": ["urn:sp:evidence:manifest:MANIFEST0001"],
+    "validationRefs": ["urn:sp:evidence:validation:VALID0001"],
+    "sourceAliasReport": "urn:sp:exodus:report:source-aliases-google-drive-001",
+    "mirrorParityReport": "urn:sp:exodus:report:mirror-parity-google-drive-001",
+    "blockedObjectReport": "urn:sp:exodus:report:blocked-objects-google-drive-001",
+    "openFormatConversionReport": "urn:sp:exodus:report:open-format-conversions-google-drive-001"
+  },
+  "eligibility": {
+    "sourceDeletionEligible": false,
+    "providerDowngradeEligible": false,
+    "reason": "Cooling-off period has not completed."
+  }
+}
