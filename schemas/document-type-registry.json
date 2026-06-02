@@ -1,0 +1,164 @@
+{
+  "registry_version": "0.1.0",
+  "source_spec": "SOCIOPROPHET Metadata Standards v0.1, Sections 4 and 11",
+  "artifact_classes": [
+    {
+      "class_id": "AC-01",
+      "name": "RawLog",
+      "source_formats": ["macOS Unified Log .logarchive", ".log", "syslog", "BSM audit /var/audit/*"],
+      "primary_enrichments": ["timestamp extraction", "process tree", "subsystem/category index", "error frequency map"],
+      "zone_path": ["Landing", "Examination", "Integration"]
+    },
+    {
+      "class_id": "AC-02",
+      "name": "ConsolePaste",
+      "source_formats": ["RTF", "TXT console output copy-paste"],
+      "primary_enrichments": ["embedded timestamp extraction", "process name index", "panic-save pattern detection", "duplicate detection via content hash"],
+      "zone_path": ["Landing", "Examination", "Integration"]
+    },
+    {
+      "class_id": "AC-03",
+      "name": "Spindump",
+      "source_formats": ["TXT", "PDF macOS spindump/sample output"],
+      "primary_enrichments": ["process tree", "PID chain", "CPU accounting", "binary image hash table", "deadlock detection", "kernel address extraction"],
+      "zone_path": ["Landing", "Examination", "Integration"]
+    },
+    {
+      "class_id": "AC-04",
+      "name": "BinaryPlist",
+      "source_formats": ["binary plist", ".plist", ".state", ".db", "bplist header"],
+      "primary_enrichments": ["bplist decode to JSON", "key/value extraction", "UUID identification", "CloudKit subscription parsing", "persistent identifier extraction"],
+      "zone_path": ["Landing", "Examination", "Integration"]
+    },
+    {
+      "class_id": "AC-05",
+      "name": "EmailThread",
+      "source_formats": ["Gmail thread JSON/HTML", "EML", "MBOX"],
+      "primary_enrichments": ["actor extraction", "timestamp chain", "delivery status", "case number extraction", "attachment inventory", "recipient/CC mapping"],
+      "zone_path": ["Landing", "Examination", "Integration", "Governed"]
+    },
+    {
+      "class_id": "AC-06",
+      "name": "LegalFiling",
+      "source_formats": ["PDF", "DOCX submissions to government, courts, or law enforcement"],
+      "primary_enrichments": ["filing metadata", "recipient identification", "delivery status", "case/ticket number", "response tracking", "cross-reference to EmailThread"],
+      "zone_path": ["Landing", "Examination", "Integration", "Governed"]
+    },
+    {
+      "class_id": "AC-07",
+      "name": "AnalysisReport",
+      "source_formats": ["DOCX", "PDF", "Google Doc AI-generated forensic reports"],
+      "primary_enrichments": ["source artifact citation extraction", "evidence shopping list generation", "claim extraction", "version chain identification", "date range analysis"],
+      "zone_path": ["Landing", "Examination", "Integration"]
+    },
+    {
+      "class_id": "AC-08",
+      "name": "DerivedReport",
+      "source_formats": ["DOCX", "PDF", "MD human-authored analysis"],
+      "primary_enrichments": ["AC-07 enrichments", "human-vs-AI authorship distinction", "methodology note capture"],
+      "zone_path": ["Landing", "Examination", "Integration", "Governed"]
+    },
+    {
+      "class_id": "AC-09",
+      "name": "AuditRecord",
+      "source_formats": ["BSM binary /var/audit/*", "CSV", "TSV"],
+      "primary_enrichments": ["syscall sequence extraction", "UID/PID mapping", "file access timeline", "privilege escalation detection"],
+      "zone_path": ["Landing", "Examination", "Integration"]
+    },
+    {
+      "class_id": "AC-10",
+      "name": "NetworkCapture",
+      "source_formats": ["PCAP", "PCAPNG", "RTF whois/DNS output", "TXT netstat/ss output"],
+      "primary_enrichments": ["endpoint extraction", "protocol identification", "timing analysis", "IP geolocation", "anomalous endpoint flagging"],
+      "zone_path": ["Landing", "Examination", "Integration"]
+    },
+    {
+      "class_id": "AC-11",
+      "name": "FirmwareDump",
+      "source_formats": ["BIN", "HEX", "raw binary"],
+      "primary_enrichments": ["header parsing", "entropy analysis", "known-good comparison", "signature verification"],
+      "zone_path": ["Landing", "Examination"]
+    },
+    {
+      "class_id": "AC-12",
+      "name": "AppleDataArchive",
+      "source_formats": ["ZIP Apple data export"],
+      "primary_enrichments": ["account identifier extraction", "device association map", "subscription state diff across captures", "iCloud service inventory"],
+      "zone_path": ["Landing", "Examination", "Integration", "Governed"]
+    }
+  ],
+  "document_routes": [
+    {
+      "document_type": "macOS spindump (.txt/.pdf)",
+      "artifact_class": "Spindump",
+      "landing_gate": ["CHK-01", "CHK-02", "CHK-09", "CHK-10"],
+      "examination_parsers": ["process tree builder", "PID chain extractor", "binary image hash extractor", "kernel address extractor"],
+      "integration_operations": ["hypothesis linkage for oahd/remotemanagementd patterns"],
+      "governed_gate": "Human review",
+      "notes": "Watch for throttled-after-exit patterns."
+    },
+    {
+      "document_type": "Console paste RTF/TXT",
+      "artifact_class": "ConsolePaste",
+      "landing_gate": ["CHK-01", "CHK-02", "CHK-08", "CHK-09", "CHK-10"],
+      "examination_parsers": ["log line parser", "timestamp extractor", "process name indexer", "panic-save pattern detector"],
+      "integration_operations": ["timeline integration", "process anomaly flagging"],
+      "governed_gate": "Human review",
+      "notes": "Panic-save filenames preserved verbatim."
+    },
+    {
+      "document_type": "Binary plist (.plist/.state)",
+      "artifact_class": "BinaryPlist",
+      "landing_gate": ["CHK-01", "CHK-02", "CHK-09", "CHK-10"],
+      "examination_parsers": ["bplist decoder", "UUID extractor", "CloudKit subscription parser"],
+      "integration_operations": ["account ID cross-reference", "persistent identifier graph"],
+      "governed_gate": "Human review",
+      "notes": "Sensitive iCloud user record names are PII."
+    },
+    {
+      "document_type": "Email thread (Gmail)",
+      "artifact_class": "EmailThread",
+      "landing_gate": ["CHK-01", "CHK-09", "CHK-10"],
+      "examination_parsers": ["actor extractor", "delivery status checker", "case number extractor", "attachment inventorier"],
+      "integration_operations": ["filing timeline", "response latency graph", "actor relationship map"],
+      "governed_gate": "Legal + human review",
+      "notes": "LegalFiling subclass if sent to law enforcement or courts."
+    },
+    {
+      "document_type": "Gemini/GPT report (DOCX)",
+      "artifact_class": "AnalysisReport",
+      "landing_gate": ["CHK-01", "CHK-02", "CHK-09", "CHK-10"],
+      "examination_parsers": ["source citation extractor", "claim extractor", "version chain detector", "date range extractor"],
+      "integration_operations": ["evidence shopping list generation", "source artifact linkage"],
+      "governed_gate": "Human review",
+      "notes": "Version-chain reports must link back to canonical source artifacts."
+    },
+    {
+      "document_type": "Apple data archive (ZIP)",
+      "artifact_class": "AppleDataArchive",
+      "landing_gate": ["CHK-01", "CHK-09", "CHK-10"],
+      "examination_parsers": ["account identifier extractor", "device association mapper", "cross-capture differ"],
+      "integration_operations": ["account identity graph", "device fingerprint registry"],
+      "governed_gate": "Legal + human review",
+      "notes": "Multi-capture diff is primary value."
+    },
+    {
+      "document_type": "BSM audit record (/var/audit)",
+      "artifact_class": "AuditRecord",
+      "landing_gate": ["CHK-01", "CHK-09", "CHK-10"],
+      "examination_parsers": ["syscall sequence parser", "UID/PID mapper", "file access timeline builder"],
+      "integration_operations": ["privilege escalation detection", "timeline corroboration"],
+      "governed_gate": "Human review",
+      "notes": "Binary format requires praudit."
+    },
+    {
+      "document_type": "Legal filing (PDF/DOCX)",
+      "artifact_class": "LegalFiling",
+      "landing_gate": ["CHK-01", "CHK-09", "CHK-10"],
+      "examination_parsers": ["filing metadata extractor", "recipient identifier", "case number extractor"],
+      "integration_operations": ["filing registry update", "response tracker"],
+      "governed_gate": "Legal + human review",
+      "notes": "Delivery status is primary chain-of-custody item."
+    }
+  ]
+}
