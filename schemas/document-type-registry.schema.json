@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.ai/exodus/document-type-registry.schema.v0.1.json",
+  "title": "Exodus DocumentTypeRegistry Schema v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["registry_version", "source_spec", "artifact_classes", "document_routes"],
+  "properties": {
+    "registry_version": { "type": "string", "minLength": 1 },
+    "source_spec": { "type": "string", "minLength": 1 },
+    "artifact_classes": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/artifact_class_entry" }
+    },
+    "document_routes": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/document_route" }
+    }
+  },
+  "$defs": {
+    "zone": { "enum": ["Discovery", "Landing", "Examination", "Integration", "Governed", "Diamond", "InFlight"] },
+    "artifact_class_name": { "enum": ["RawLog", "ConsolePaste", "Spindump", "BinaryPlist", "EmailThread", "LegalFiling", "AnalysisReport", "DerivedReport", "AuditRecord", "NetworkCapture", "FirmwareDump", "AppleDataArchive", "Other"] },
+    "artifact_class_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["class_id", "name", "source_formats", "primary_enrichments", "zone_path"],
+      "properties": {
+        "class_id": { "type": "string", "pattern": "^AC-[0-9]{2}$" },
+        "name": { "$ref": "#/$defs/artifact_class_name" },
+        "source_formats": { "type": "array", "items": { "type": "string" } },
+        "primary_enrichments": { "type": "array", "items": { "type": "string" } },
+        "zone_path": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/zone" } }
+      }
+    },
+    "document_route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["document_type", "artifact_class", "landing_gate", "examination_parsers", "integration_operations", "governed_gate", "notes"],
+      "properties": {
+        "document_type": { "type": "string", "minLength": 1 },
+        "artifact_class": { "$ref": "#/$defs/artifact_class_name" },
+        "landing_gate": { "type": "array", "items": { "type": "string", "pattern": "^CHK-[0-9]{2}$" } },
+        "examination_parsers": { "type": "array", "items": { "type": "string" } },
+        "integration_operations": { "type": "array", "items": { "type": "string" } },
+        "governed_gate": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}
