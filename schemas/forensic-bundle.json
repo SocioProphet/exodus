@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.ai/exodus/forensic-bundle.v0.1.json",
+  "title": "Exodus ForensicBundle v0.1",
+  "description": "Court-presentable signed, hash-sealed export bundle schema derived from SOCIOPROPHET Metadata Standards v0.1 Section 10.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "bundle_id",
+    "case_id",
+    "bundle_version",
+    "serializer_spec",
+    "hash_algorithm",
+    "bundle_manifest",
+    "custody_chain_snapshot",
+    "replay_manifest",
+    "bundle_hash_blake3",
+    "signing_key_ref",
+    "bundle_signature",
+    "trpc_commit_receipt",
+    "generated_at_micros",
+    "generated_by"
+  ],
+  "properties": {
+    "bundle_id": { "$ref": "#/$defs/uuid" },
+    "case_id": { "type": "string", "minLength": 1 },
+    "bundle_version": { "type": "integer", "minimum": 1 },
+    "serializer_spec": { "type": "string", "minLength": 1 },
+    "hash_algorithm": { "enum": ["BLAKE3-256", "SHA-256", "BLAKE3-256+SHA-256"] },
+    "bundle_manifest": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/bundle_member" }
+    },
+    "custody_chain_snapshot": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/custody_event_ref" }
+    },
+    "replay_manifest": { "$ref": "#/$defs/replay_manifest" },
+    "bundle_hash_blake3": { "$ref": "#/$defs/hex_32" },
+    "bundle_hash_sha256": { "anyOf": [{ "$ref": "#/$defs/hex_32" }, { "type": "null" }] },
+    "signing_key_ref": { "type": "string", "minLength": 1 },
+    "bundle_signature": { "type": "string", "minLength": 1, "description": "Hex or base64 encoded signature bytes." },
+    "trpc_commit_receipt": { "type": "string", "minLength": 1, "description": "Hex or base64 encoded TriTRPC BEACON_COMMIT receipt." },
+    "generated_at_micros": { "type": "integer", "minimum": 0 },
+    "generated_by": { "type": "string", "minLength": 1 },
+    "disclosure_authorization": { "type": ["string", "null"] }
+  },
+  "$defs": {
+    "uuid": { "type": "string", "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$" },
+    "hex_32": { "type": "string", "pattern": "^[0-9a-fA-F]{64}$" },
+    "bundle_member": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_id", "exhibit_id", "hash_blake3"],
+      "properties": {
+        "artifact_id": { "$ref": "#/$defs/uuid" },
+        "exhibit_id": { "type": "string", "pattern": "^AF-[0-9]{4,}$" },
+        "hash_blake3": { "$ref": "#/$defs/hex_32" },
+        "hash_sha256": { "anyOf": [{ "$ref": "#/$defs/hex_32" }, { "type": "null" }] },
+        "original_filename": { "type": "string" }
+      }
+    },
+    "custody_event_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["event_id", "artifact_id", "hash_at_event", "timestamp_micros"],
+      "properties": {
+        "event_id": { "$ref": "#/$defs/uuid" },
+        "artifact_id": { "$ref": "#/$defs/uuid" },
+        "hash_at_event": { "$ref": "#/$defs/hex_32" },
+        "timestamp_micros": { "type": "integer", "minimum": 0 },
+        "trpc_commit_receipt": { "type": ["string", "null"] }
+      }
+    },
+    "replay_manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["serializer_version", "tool_versions", "fixture_paths", "expected_hashes"],
+      "properties": {
+        "serializer_version": { "type": "string", "minLength": 1 },
+        "tool_versions": { "type": "array", "items": { "type": "string" } },
+        "fixture_paths": { "type": "array", "items": { "type": "string" } },
+        "expected_hashes": { "type": "array", "items": { "$ref": "#/$defs/hex_32" } }
+      }
+    }
+  }
+}

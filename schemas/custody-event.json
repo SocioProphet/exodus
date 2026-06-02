@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.ai/exodus/custody-event.v0.1.json",
+  "title": "Exodus CustodyEvent v0.1",
+  "description": "Append-only chain-of-custody event schema derived from SOCIOPROPHET Metadata Standards v0.1 Section 6.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_id",
+    "artifact_id",
+    "event_type",
+    "actor_id",
+    "actor_type",
+    "timestamp_micros",
+    "custody_status"
+  ],
+  "properties": {
+    "event_id": { "$ref": "#/$defs/uuid" },
+    "artifact_id": { "$ref": "#/$defs/uuid" },
+    "event_type": { "$ref": "#/$defs/event_type" },
+    "actor_id": { "type": "string", "minLength": 1 },
+    "actor_type": { "enum": ["HumanUser", "IntakeProcess", "AnalysisAgent", "AIAgent", "ExportProcess", "VerificationProcess"] },
+    "timestamp_micros": { "type": "integer", "minimum": 0 },
+    "zone_from": { "anyOf": [{ "$ref": "#/$defs/zone" }, { "type": "null" }] },
+    "zone_to": { "anyOf": [{ "$ref": "#/$defs/zone" }, { "type": "null" }] },
+    "tool_name": { "type": ["string", "null"] },
+    "hash_at_event": { "anyOf": [{ "$ref": "#/$defs/hex_32" }, { "type": "null" }] },
+    "trpc_commit_receipt": { "type": ["string", "null"], "description": "Hex or base64 encoded TriTRPC BEACON_COMMIT receipt bytes." },
+    "recipient_id": { "type": ["string", "null"] },
+    "hypothesis_ids": { "type": "array", "items": { "type": "string" } },
+    "note": { "type": ["string", "null"] },
+    "custody_status": { "enum": ["Intact", "Gap", "IntegrityViolation", "PendingVerification"] }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "event_type": { "const": "Intake" } }, "required": ["event_type"] },
+      "then": { "required": ["hash_at_event", "zone_to"] }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "HashVerification" } }, "required": ["event_type"] },
+      "then": { "required": ["hash_at_event"] }
+    },
+    {
+      "if": { "properties": { "event_type": { "enum": ["ZonePromotion", "ZoneDemotion", "PolicyException"] } }, "required": ["event_type"] },
+      "then": { "required": ["zone_from", "zone_to"] }
+    },
+    {
+      "if": { "properties": { "event_type": { "enum": ["Examination", "EnrichmentWrite"] } }, "required": ["event_type"] },
+      "then": { "required": ["tool_name"] }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "HypothesisLink" } }, "required": ["event_type"] },
+      "then": { "required": ["hypothesis_ids"] }
+    },
+    {
+      "if": { "properties": { "event_type": { "enum": ["IntegrityViolation", "ManualOverride", "PolicyException", "ZoneDemotion", "Retirement"] } }, "required": ["event_type"] },
+      "then": { "required": ["note"] }
+    }
+  ],
+  "$defs": {
+    "uuid": { "type": "string", "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$" },
+    "hex_32": { "type": "string", "pattern": "^[0-9a-fA-F]{64}$" },
+    "zone": { "enum": ["Discovery", "Landing", "Examination", "Integration", "Governed", "Diamond", "InFlight"] },
+    "event_type": { "enum": ["Intake", "HashVerification", "ZonePromotion", "ZoneDemotion", "Examination", "EnrichmentWrite", "HypothesisLink", "Read", "ExportBundled", "Disclosed", "IntegrityViolation", "PolicyException", "ManualOverride", "Retirement"] }
+  }
+}
