@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.ai/exodus/policy-gate.v0.1.json",
+  "title": "Exodus ZoneGatePolicy v0.1",
+  "description": "Versioned zone promotion gate policy schema derived from SOCIOPROPHET Metadata Standards v0.1 Section 7.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "policy_id",
+    "from_zone",
+    "to_zone",
+    "applies_to_classes",
+    "required_fields",
+    "required_checks",
+    "human_review_required",
+    "legal_review_required",
+    "policy_version",
+    "effective_from_txn"
+  ],
+  "properties": {
+    "policy_id": { "type": "string", "pattern": "^GATE-[A-Za-z]+-[A-Za-z]+-v[0-9]+$" },
+    "from_zone": { "$ref": "#/$defs/zone" },
+    "to_zone": { "$ref": "#/$defs/zone" },
+    "applies_to_classes": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "anyOf": [{ "$ref": "#/$defs/artifact_class" }, { "const": "*" }] }
+    },
+    "required_fields": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "required_checks": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/check_spec" } },
+    "human_review_required": { "type": "boolean" },
+    "legal_review_required": { "type": "boolean" },
+    "policy_version": { "type": "integer", "minimum": 1 },
+    "effective_from_txn": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["Active", "Retired", "Draft"] }
+  },
+  "$defs": {
+    "zone": { "enum": ["Discovery", "Landing", "Examination", "Integration", "Governed", "Diamond", "InFlight"] },
+    "artifact_class": { "enum": ["RawLog", "ConsolePaste", "Spindump", "BinaryPlist", "EmailThread", "LegalFiling", "AnalysisReport", "DerivedReport", "AuditRecord", "NetworkCapture", "FirmwareDump", "AppleDataArchive", "Other"] },
+    "check_id": { "enum": ["CHK-01", "CHK-02", "CHK-03", "CHK-04", "CHK-05", "CHK-06", "CHK-07", "CHK-08", "CHK-09", "CHK-10"] },
+    "check_spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["check_id", "name", "failure_action"],
+      "properties": {
+        "check_id": { "$ref": "#/$defs/check_id" },
+        "name": { "type": "string", "minLength": 1 },
+        "failure_action": { "type": "string", "minLength": 1 },
+        "blocking": { "type": "boolean", "default": true }
+      }
+    }
+  }
+}
