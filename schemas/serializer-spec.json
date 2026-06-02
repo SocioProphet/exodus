@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.ai/exodus/serializer-spec.v0.1.json",
+  "title": "Exodus SerializerSpec v0.1",
+  "description": "Versioned canonicalization and serializer contract required before acquisition hashes can be asserted as reproducible.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "serializer_spec_id",
+    "serializer_version",
+    "canonicalization_spec",
+    "encoding",
+    "deterministic",
+    "hash_input_definition",
+    "tool_name",
+    "tool_version",
+    "status"
+  ],
+  "properties": {
+    "serializer_spec_id": { "type": "string", "pattern": "^SERIALIZER-[A-Za-z0-9_.-]+-v[0-9]+$" },
+    "serializer_version": { "type": "string", "minLength": 1 },
+    "canonicalization_spec": { "type": "string", "pattern": "^CANON-v[0-9]+\\.[0-9]+" },
+    "encoding": { "enum": ["raw-bytes", "deterministic-cbor-rfc8949", "json-canonical", "utf8-text"] },
+    "deterministic": { "const": true },
+    "hash_input_definition": { "type": "string", "minLength": 1 },
+    "tool_name": { "type": "string", "minLength": 1 },
+    "tool_version": { "type": "string", "minLength": 1 },
+    "fixture_paths": { "type": "array", "items": { "type": "string" } },
+    "known_limitations": { "type": "array", "items": { "type": "string" } },
+    "status": { "enum": ["Draft", "Active", "Retired"] }
+  }
+}
