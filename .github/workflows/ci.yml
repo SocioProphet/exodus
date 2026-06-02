@@ -12,6 +12,8 @@ jobs:
           python-version: '3.11'
       - name: Validate example JSON parses
         run: python3 scripts/validate_examples.py
+      - name: Validate Phase 0 metadata schemas
+        run: python3 scripts/validate_phase0_schemas.py
       - name: Compile benchmark scripts
         run: python3 -m py_compile packages/processing/benchmarks/deterministic_vs_hnet/run_benchmark.py packages/processing/benchmarks/deterministic_vs_hnet/score_run.py
       - name: Check critical docs exist
