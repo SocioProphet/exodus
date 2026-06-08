@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.ai/exodus/exodus-run.v0.schema.json",
+  "title": "Exodus Run v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_id",
+    "tenant_id",
+    "generated_at",
+    "phase",
+    "demo_boundary",
+    "providers",
+    "accounts",
+    "asset_census",
+    "export_ledger",
+    "scores",
+    "blockers",
+    "recommendations",
+    "phase_2_budget_proposal"
+  ],
+  "properties": {
+    "schema_version": { "const": "exodus.run.v0" },
+    "run_id": { "type": "string", "minLength": 1 },
+    "tenant_id": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "phase": {
+      "type": "string",
+      "enum": ["phase_1_topology_census", "phase_2_plan_budget"]
+    },
+    "demo_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["synthetic", "live_credentials_required", "destructive_actions_allowed", "provider_side_writes_allowed"],
+      "properties": {
+        "synthetic": { "const": true },
+        "live_credentials_required": { "const": false },
+        "destructive_actions_allowed": { "const": false },
+        "provider_side_writes_allowed": { "const": false },
+        "notes": { "type": "string" }
+      }
+    },
+    "providers": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/provider" }
+    },
+    "accounts": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/account" }
+    },
+    "asset_census": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/asset_census_item" }
+    },
+    "export_ledger": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/export_ledger_item" }
+    },
+    "scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eri", "pcs_by_provider"],
+      "properties": {
+        "eri": { "$ref": "#/$defs/score" },
+        "pcs_by_provider": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/provider_score" }
+        }
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/blocker" }
+    },
+    "recommendations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/recommendation" }
+    },
+    "phase_2_budget_proposal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["proposal_id", "currency", "estimated_cost", "waves", "evidence_refs"],
+      "properties": {
+        "proposal_id": { "type": "string", "minLength": 1 },
+        "currency": { "type": "string", "minLength": 3, "maxLength": 3 },
+        "estimated_cost": { "type": "number", "minimum": 0 },
+        "waves": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["wave_id", "label", "provider_refs", "domain_refs", "estimated_cost", "depends_on"],
+            "properties": {
+              "wave_id": { "type": "string", "minLength": 1 },
+              "label": { "type": "string", "minLength": 1 },
+              "provider_refs": { "type": "array", "items": { "type": "string" } },
+              "domain_refs": { "type": "array", "items": { "type": "string" } },
+              "estimated_cost": { "type": "number", "minimum": 0 },
+              "depends_on": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        },
+        "evidence_refs": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  },
+  "$defs": {
+    "provider": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider_id", "name", "domains", "control_surfaces", "confidence"],
+      "properties": {
+        "provider_id": { "type": "string", "minLength": 1 },
+        "name": { "type": "string", "minLength": 1 },
+        "domains": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "control_surfaces": { "type": "array", "items": { "type": "string" } },
+        "confidence": { "type": "string", "enum": ["low", "medium", "high"] }
+      }
+    },
+    "account": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["account_id", "provider_ref", "label", "root_refs"],
+      "properties": {
+        "account_id": { "type": "string", "minLength": 1 },
+        "provider_ref": { "type": "string", "minLength": 1 },
+        "label": { "type": "string", "minLength": 1 },
+        "root_refs": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "asset_census_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["asset_collection_id", "provider_ref", "domain", "asset_count", "byte_count", "exportability", "temperature"],
+      "properties": {
+        "asset_collection_id": { "type": "string", "minLength": 1 },
+        "provider_ref": { "type": "string", "minLength": 1 },
+        "domain": { "type": "string", "minLength": 1 },
+        "asset_count": { "type": "integer", "minimum": 0 },
+        "byte_count": { "type": "integer", "minimum": 0 },
+        "exportability": { "type": "string", "enum": ["native_open", "exportable", "partial", "blocked", "unknown"] },
+        "temperature": { "type": "string", "enum": ["hot", "warm", "cold"] }
+      }
+    },
+    "export_ledger_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_id", "provider_ref", "domain", "artifact_class", "hash_sha256", "validation_status"],
+      "properties": {
+        "evidence_id": { "type": "string", "minLength": 1 },
+        "provider_ref": { "type": "string", "minLength": 1 },
+        "domain": { "type": "string", "minLength": 1 },
+        "artifact_class": { "type": "string", "minLength": 1 },
+        "hash_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "validation_status": { "type": "string", "enum": ["synthetic_verified", "pending", "failed"] }
+      }
+    },
+    "score": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["score", "label", "explanation", "evidence_refs"],
+      "properties": {
+        "score": { "type": "number", "minimum": 0, "maximum": 1 },
+        "label": { "type": "string", "minLength": 1 },
+        "explanation": { "type": "string", "minLength": 1 },
+        "evidence_refs": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "provider_score": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider_ref", "score", "label", "explanation", "evidence_refs"],
+      "properties": {
+        "provider_ref": { "type": "string", "minLength": 1 },
+        "score": { "type": "number", "minimum": 0, "maximum": 1 },
+        "label": { "type": "string", "minLength": 1 },
+        "explanation": { "type": "string", "minLength": 1 },
+        "evidence_refs": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "blocker": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["blocker_id", "provider_ref", "domain", "severity", "description", "evidence_refs"],
+      "properties": {
+        "blocker_id": { "type": "string", "minLength": 1 },
+        "provider_ref": { "type": "string", "minLength": 1 },
+        "domain": { "type": "string", "minLength": 1 },
+        "severity": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+        "description": { "type": "string", "minLength": 1 },
+        "evidence_refs": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "recommendation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recommendation_id", "priority", "description", "expected_sovereignty_gain", "depends_on", "evidence_refs"],
+      "properties": {
+        "recommendation_id": { "type": "string", "minLength": 1 },
+        "priority": { "type": "integer", "minimum": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "expected_sovereignty_gain": { "type": "number", "minimum": 0, "maximum": 1 },
+        "depends_on": { "type": "array", "items": { "type": "string" } },
+        "evidence_refs": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}
