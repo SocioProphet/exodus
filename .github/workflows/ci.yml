@@ -16,8 +16,10 @@ jobs:
         run: python3 scripts/validate_phase0_schemas.py
       - name: Validate synthetic intake path
         run: python3 scripts/validate_intake_fixture.py
-      - name: Compile intake and benchmark scripts
-        run: python3 -m py_compile scripts/exodus_intake.py scripts/validate_intake_fixture.py packages/processing/benchmarks/deterministic_vs_hnet/run_benchmark.py packages/processing/benchmarks/deterministic_vs_hnet/score_run.py
+      - name: Validate synthetic Exodus workroom demo
+        run: python3 scripts/validate_exodus_demo.py
+      - name: Compile intake, demo, and benchmark scripts
+        run: python3 -m py_compile scripts/exodus_intake.py scripts/validate_intake_fixture.py scripts/validate_exodus_demo.py packages/processing/benchmarks/deterministic_vs_hnet/run_benchmark.py packages/processing/benchmarks/deterministic_vs_hnet/score_run.py
       - name: Check critical docs exist
         run: |
           test -f docs/phases.md
