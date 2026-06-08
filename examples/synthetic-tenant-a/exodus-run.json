@@ -1,0 +1,270 @@
+{
+  "schema_version": "exodus.run.v0",
+  "run_id": "exodus-run-synthetic-tenant-a-001",
+  "tenant_id": "synthetic-tenant-a",
+  "generated_at": "2026-06-08T12:30:00Z",
+  "phase": "phase_2_plan_budget",
+  "demo_boundary": {
+    "synthetic": true,
+    "live_credentials_required": false,
+    "destructive_actions_allowed": false,
+    "provider_side_writes_allowed": false,
+    "notes": "Synthetic fixture for Exodus Migration Workroom demo v0. No real provider accounts, credentials, exports, or destructive actions are used."
+  },
+  "providers": [
+    {
+      "provider_id": "provider.apple",
+      "name": "Apple",
+      "domains": ["identity", "storage", "photos", "notes", "calendar", "contacts", "assistant_workflows"],
+      "control_surfaces": ["Apple ID", "iCloud Drive", "Photos", "Notes", "Calendar", "Contacts", "Siri Shortcuts"],
+      "confidence": "medium"
+    },
+    {
+      "provider_id": "provider.google",
+      "name": "Google",
+      "domains": ["identity", "mail", "storage", "office_docs", "calendar", "contacts", "chat", "assistant_workflows"],
+      "control_surfaces": ["Google Account", "Gmail", "Drive", "Docs", "Calendar", "Contacts", "Chat", "Gemini Workspace"],
+      "confidence": "high"
+    },
+    {
+      "provider_id": "provider.microsoft",
+      "name": "Microsoft",
+      "domains": ["identity", "mail", "storage", "office_docs", "calendar", "chat", "meetings"],
+      "control_surfaces": ["Microsoft Entra ID", "Outlook", "OneDrive", "SharePoint", "Office", "Teams"],
+      "confidence": "high"
+    }
+  ],
+  "accounts": [
+    {
+      "account_id": "acct.apple.primary",
+      "provider_ref": "provider.apple",
+      "label": "Synthetic Apple personal estate",
+      "root_refs": ["root.apple.icloud-drive", "root.apple.photos", "root.apple.notes"]
+    },
+    {
+      "account_id": "acct.google.workspace",
+      "provider_ref": "provider.google",
+      "label": "Synthetic Google Workspace estate",
+      "root_refs": ["root.google.drive", "root.google.gmail", "root.google.calendar"]
+    },
+    {
+      "account_id": "acct.microsoft.work",
+      "provider_ref": "provider.microsoft",
+      "label": "Synthetic Microsoft 365 estate",
+      "root_refs": ["root.microsoft.onedrive", "root.microsoft.outlook", "root.microsoft.teams"]
+    }
+  ],
+  "asset_census": [
+    {
+      "asset_collection_id": "assets.apple.icloud-drive.docs",
+      "provider_ref": "provider.apple",
+      "domain": "storage",
+      "asset_count": 4200,
+      "byte_count": 18874368000,
+      "exportability": "partial",
+      "temperature": "warm"
+    },
+    {
+      "asset_collection_id": "assets.apple.photos.library",
+      "provider_ref": "provider.apple",
+      "domain": "photos",
+      "asset_count": 31800,
+      "byte_count": 257698037760,
+      "exportability": "partial",
+      "temperature": "cold"
+    },
+    {
+      "asset_collection_id": "assets.google.gmail",
+      "provider_ref": "provider.google",
+      "domain": "mail",
+      "asset_count": 128000,
+      "byte_count": 64424509440,
+      "exportability": "exportable",
+      "temperature": "hot"
+    },
+    {
+      "asset_collection_id": "assets.google.drive.docs",
+      "provider_ref": "provider.google",
+      "domain": "office_docs",
+      "asset_count": 9400,
+      "byte_count": 32212254720,
+      "exportability": "partial",
+      "temperature": "hot"
+    },
+    {
+      "asset_collection_id": "assets.microsoft.sharepoint.office",
+      "provider_ref": "provider.microsoft",
+      "domain": "office_docs",
+      "asset_count": 15600,
+      "byte_count": 91268055040,
+      "exportability": "exportable",
+      "temperature": "hot"
+    },
+    {
+      "asset_collection_id": "assets.microsoft.teams.chat",
+      "provider_ref": "provider.microsoft",
+      "domain": "chat",
+      "asset_count": 78000,
+      "byte_count": 8589934592,
+      "exportability": "blocked",
+      "temperature": "warm"
+    }
+  ],
+  "export_ledger": [
+    {
+      "evidence_id": "ev.apple.icloud-drive.inventory.v1",
+      "provider_ref": "provider.apple",
+      "domain": "storage",
+      "artifact_class": "ProviderInventoryManifest",
+      "hash_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "validation_status": "synthetic_verified"
+    },
+    {
+      "evidence_id": "ev.google.takeout.manifest.v1",
+      "provider_ref": "provider.google",
+      "domain": "mail",
+      "artifact_class": "ExportManifest",
+      "hash_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "validation_status": "synthetic_verified"
+    },
+    {
+      "evidence_id": "ev.google.drive.exportability.v1",
+      "provider_ref": "provider.google",
+      "domain": "office_docs",
+      "artifact_class": "ExportabilityReport",
+      "hash_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "validation_status": "synthetic_verified"
+    },
+    {
+      "evidence_id": "ev.microsoft.graph.delta.snapshot.v1",
+      "provider_ref": "provider.microsoft",
+      "domain": "office_docs",
+      "artifact_class": "DeltaSnapshot",
+      "hash_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "validation_status": "synthetic_verified"
+    },
+    {
+      "evidence_id": "ev.microsoft.teams.export.blocker.v1",
+      "provider_ref": "provider.microsoft",
+      "domain": "chat",
+      "artifact_class": "BlockerEvidence",
+      "hash_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "validation_status": "synthetic_verified"
+    }
+  ],
+  "scores": {
+    "eri": {
+      "score": 0.42,
+      "label": "Constrained but actionable",
+      "explanation": "The estate has strong export paths for mail and Microsoft office assets, but remains constrained by Apple media/library exports, Google native document conversion, Microsoft Teams chat exportability, and identity dependency concentration.",
+      "evidence_refs": ["ev.google.takeout.manifest.v1", "ev.microsoft.graph.delta.snapshot.v1", "ev.microsoft.teams.export.blocker.v1"]
+    },
+    "pcs_by_provider": [
+      {
+        "provider_ref": "provider.apple",
+        "score": 0.66,
+        "label": "High control surface",
+        "explanation": "Apple controls identity, iCloud Drive, Photos, Notes, and device-bound assistant workflows with partial exportability and medium confidence.",
+        "evidence_refs": ["ev.apple.icloud-drive.inventory.v1"]
+      },
+      {
+        "provider_ref": "provider.google",
+        "score": 0.58,
+        "label": "Moderate-high control surface",
+        "explanation": "Google Workspace assets are broadly discoverable, but native documents and assistant workflows require conversion and workflow replacement planning.",
+        "evidence_refs": ["ev.google.takeout.manifest.v1", "ev.google.drive.exportability.v1"]
+      },
+      {
+        "provider_ref": "provider.microsoft",
+        "score": 0.61,
+        "label": "Moderate-high control surface",
+        "explanation": "Microsoft 365 content is accessible through Graph and export paths, but Teams chat and identity dependencies remain significant blockers.",
+        "evidence_refs": ["ev.microsoft.graph.delta.snapshot.v1", "ev.microsoft.teams.export.blocker.v1"]
+      }
+    ]
+  },
+  "blockers": [
+    {
+      "blocker_id": "blocker.apple.photos.partial-export",
+      "provider_ref": "provider.apple",
+      "domain": "photos",
+      "severity": "medium",
+      "description": "Apple Photos library requires staged export and metadata preservation strategy before bulk migration.",
+      "evidence_refs": ["ev.apple.icloud-drive.inventory.v1"]
+    },
+    {
+      "blocker_id": "blocker.google.docs.conversion",
+      "provider_ref": "provider.google",
+      "domain": "office_docs",
+      "severity": "medium",
+      "description": "Google-native Docs/Sheets/Slides require conversion policy, fidelity checks, and canonical target format selection.",
+      "evidence_refs": ["ev.google.drive.exportability.v1"]
+    },
+    {
+      "blocker_id": "blocker.microsoft.teams.chat-export",
+      "provider_ref": "provider.microsoft",
+      "domain": "chat",
+      "severity": "high",
+      "description": "Teams chat exportability is constrained and requires Graph/export policy review before replacement planning.",
+      "evidence_refs": ["ev.microsoft.teams.export.blocker.v1"]
+    }
+  ],
+  "recommendations": [
+    {
+      "recommendation_id": "rec.establish-open-mail-archive",
+      "priority": 1,
+      "description": "Start with Gmail and Outlook export manifests, preserve raw exports, and normalize into an open mail archive before touching hotter collaborative assets.",
+      "expected_sovereignty_gain": 0.18,
+      "depends_on": [],
+      "evidence_refs": ["ev.google.takeout.manifest.v1"]
+    },
+    {
+      "recommendation_id": "rec.office-doc-conversion-pilot",
+      "priority": 2,
+      "description": "Run a 500-document conversion pilot across Google-native and Microsoft Office assets to estimate fidelity risk and processing budget.",
+      "expected_sovereignty_gain": 0.16,
+      "depends_on": ["rec.establish-open-mail-archive"],
+      "evidence_refs": ["ev.google.drive.exportability.v1", "ev.microsoft.graph.delta.snapshot.v1"]
+    },
+    {
+      "recommendation_id": "rec.chat-retention-policy-review",
+      "priority": 3,
+      "description": "Classify Teams chat retention/export constraints and determine whether chat should be archived, summarized, or replaced through a workspace-native room model.",
+      "expected_sovereignty_gain": 0.11,
+      "depends_on": [],
+      "evidence_refs": ["ev.microsoft.teams.export.blocker.v1"]
+    }
+  ],
+  "phase_2_budget_proposal": {
+    "proposal_id": "budget.synthetic-tenant-a.phase-2.v1",
+    "currency": "USD",
+    "estimated_cost": 18500,
+    "waves": [
+      {
+        "wave_id": "wave-1-mail-and-ledgers",
+        "label": "Mail archive and evidence ledger stabilization",
+        "provider_refs": ["provider.google", "provider.microsoft"],
+        "domain_refs": ["mail", "evidence"],
+        "estimated_cost": 4500,
+        "depends_on": []
+      },
+      {
+        "wave_id": "wave-2-office-doc-pilot",
+        "label": "Office document conversion pilot",
+        "provider_refs": ["provider.google", "provider.microsoft"],
+        "domain_refs": ["office_docs"],
+        "estimated_cost": 6500,
+        "depends_on": ["wave-1-mail-and-ledgers"]
+      },
+      {
+        "wave_id": "wave-3-media-and-chat-risk",
+        "label": "Apple media preservation and Teams chat blocker analysis",
+        "provider_refs": ["provider.apple", "provider.microsoft"],
+        "domain_refs": ["photos", "chat"],
+        "estimated_cost": 7500,
+        "depends_on": ["wave-1-mail-and-ledgers"]
+      }
+    ],
+    "evidence_refs": ["ev.apple.icloud-drive.inventory.v1", "ev.google.takeout.manifest.v1", "ev.microsoft.graph.delta.snapshot.v1", "ev.microsoft.teams.export.blocker.v1"]
+  }
+}
