@@ -1,0 +1,18 @@
+{
+  "id": "urn:sp:exodus:owned-media-conversion-profile:video-archive-mkv",
+  "kind": "OwnedMediaConversionProfile",
+  "specVersion": "0.1.0",
+  "profileName": "video-archive-mkv",
+  "mediaKind": "video",
+  "rawCustodyRequired": true,
+  "attestationRequired": true,
+  "distributionClearanceRequired": false,
+  "preferredAction": "remux",
+  "targetContainer": "mkv",
+  "metadataSidecar": "json",
+  "subtitleTarget": "srt-or-webvtt",
+  "budgetClass": "archive-plus-portable",
+  "failureStates": ["metadata-only", "blocked-access-control", "blocked-unsupported-format", "blocked-storage-budget", "failed-tool-error"],
+  "notes": "Use for archival video derivatives. Prefer stream copy/remux before transcode.",
+  "updatedAtUtc": "2026-05-05T13:47:00Z"
+}

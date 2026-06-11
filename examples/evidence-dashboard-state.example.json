@@ -1,0 +1,37 @@
+{
+  "id": "urn:sp:exodus:evidence-dashboard-state:wave-google-drive-001",
+  "kind": "EvidenceDashboardState",
+  "specVersion": "0.1.0",
+  "provider": "google-drive",
+  "migrationWaveId": "wave-google-drive-001",
+  "state": "landed",
+  "metrics": {
+    "exitReadinessIndex": 42,
+    "providerControlSurfaceScore": 77,
+    "migratedBlobCount": 1200,
+    "migratedUniqueBytes": 918273645,
+    "duplicateBytesEliminated": 104857600,
+    "sourceAliasesPreserved": 1340,
+    "blockedObjects": 12,
+    "openFormatConversions": 88,
+    "proofPacksGenerated": 1,
+    "deletionEligibleSourceObjects": 0
+  },
+  "evidenceRefs": [
+    "urn:sp:evidence:acquisition:RUN0001",
+    "urn:sp:evidence:validation:VALID0001"
+  ],
+  "blockers": [
+    {
+      "code": "MIRROR_PARITY_PENDING",
+      "message": "Mirror parity has not completed for this migration wave.",
+      "severity": "warn"
+    }
+  ],
+  "nextActions": [
+    "complete mirror parity check",
+    "generate source alias report",
+    "start cooling-off window after validation passes"
+  ],
+  "updatedAtUtc": "2026-05-05T02:10:00Z"
+}

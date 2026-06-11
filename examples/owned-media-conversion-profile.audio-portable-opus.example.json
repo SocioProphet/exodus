@@ -1,0 +1,18 @@
+{
+  "id": "urn:sp:exodus:owned-media-conversion-profile:audio-portable-opus",
+  "kind": "OwnedMediaConversionProfile",
+  "specVersion": "0.1.0",
+  "profileName": "audio-portable-opus",
+  "mediaKind": "audio",
+  "rawCustodyRequired": true,
+  "attestationRequired": true,
+  "distributionClearanceRequired": false,
+  "preferredAction": "transcode",
+  "targetContainer": "ogg",
+  "targetCodec": "opus",
+  "metadataSidecar": "json",
+  "budgetClass": "playback-ready",
+  "failureStates": ["metadata-only", "blocked-access-control", "failed-tool-error"],
+  "notes": "Use for efficient portable local playback derivatives after raw custody and attestation.",
+  "updatedAtUtc": "2026-05-05T13:46:00Z"
+}

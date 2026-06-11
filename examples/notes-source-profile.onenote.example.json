@@ -1,0 +1,25 @@
+{
+  "id": "urn:sp:exodus:notes-source-profile:onenote",
+  "kind": "NotesSourceProfile",
+  "specVersion": "0.1.0",
+  "provider": "microsoft",
+  "surface": "onenote",
+  "ingestMethods": ["web-export", "api-collector", "local-app-export", "archive-bundle", "pdf-export", "html-export"],
+  "expectedMetadata": [
+    "notebook",
+    "section",
+    "page",
+    "page-title",
+    "attachment-refs",
+    "ink-or-drawing-presence",
+    "audio-or-transcript-presence",
+    "share-status",
+    "created-time",
+    "modified-time"
+  ],
+  "attachmentSupport": true,
+  "collaborationMetadata": true,
+  "preserveRawFirst": true,
+  "notes": "OneNote is treated as a Microsoft ingress surface only.",
+  "updatedAtUtc": "2026-05-05T05:35:00Z"
+}

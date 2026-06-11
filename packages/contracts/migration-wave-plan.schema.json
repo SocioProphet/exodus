@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.ai/exodus/0.1.0/migration-wave-plan.schema.json",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "specVersion",
+    "provider",
+    "waveId",
+    "scope",
+    "target",
+    "policy",
+    "createdAtUtc"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "kind": { "const": "MigrationWavePlan" },
+    "specVersion": { "type": "string", "pattern": "^0\\.1\\.\\d+$" },
+    "provider": { "type": "string" },
+    "waveId": { "type": "string" },
+    "scope": {
+      "type": "object",
+      "required": ["sourceType", "selection", "estimatedObjectCount", "estimatedBytes"],
+      "properties": {
+        "sourceType": {
+          "type": "string",
+          "enum": ["local-files", "google-drive", "icloud-drive", "email", "notes", "mobile-export", "browser-export", "terminal-capture", "office-documents", "other"]
+        },
+        "selection": { "type": "string" },
+        "estimatedObjectCount": { "type": "integer", "minimum": 0 },
+        "estimatedBytes": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "target": {
+      "type": "object",
+      "required": ["objectStore", "metadataStore", "landingPrefix"],
+      "properties": {
+        "objectStore": { "type": "string" },
+        "metadataStore": { "type": "string" },
+        "landingPrefix": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "policy": {
+      "type": "object",
+      "required": ["deleteSourceAfterIngest", "requiresMirrorParity", "requiresCoolingOff"],
+      "properties": {
+        "deleteSourceAfterIngest": { "type": "boolean" },
+        "requiresMirrorParity": { "type": "boolean" },
+        "requiresManifestParity": { "type": "boolean" },
+        "requiresCoolingOff": { "type": "boolean" },
+        "coolingOffDays": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "parserRoutes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "blockedReason": { "type": "string" },
+    "createdAtUtc": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

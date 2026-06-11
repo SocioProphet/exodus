@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.ai/exodus/0.1.0/notes-source-profile.schema.json",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "specVersion",
+    "provider",
+    "surface",
+    "ingestMethods",
+    "preserveRawFirst",
+    "updatedAtUtc"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "kind": { "const": "NotesSourceProfile" },
+    "specVersion": { "type": "string", "pattern": "^0\\.1\\.\\d+$" },
+    "provider": {
+      "type": "string",
+      "enum": ["apple", "microsoft", "google"]
+    },
+    "surface": {
+      "type": "string",
+      "enum": ["icloud-notes", "onenote", "google-keep"]
+    },
+    "ingestMethods": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "web-export",
+          "takeout-export",
+          "api-collector",
+          "local-app-export",
+          "trusted-device-collector",
+          "archive-bundle",
+          "pdf-export",
+          "html-export",
+          "json-export",
+          "screenshot-capture"
+        ]
+      },
+      "minItems": 1
+    },
+    "expectedMetadata": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "attachmentSupport": { "type": "boolean" },
+    "collaborationMetadata": { "type": "boolean" },
+    "preserveRawFirst": { "type": "boolean" },
+    "notes": { "type": "string" },
+    "updatedAtUtc": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

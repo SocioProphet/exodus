@@ -1,0 +1,28 @@
+{
+  "id": "urn:sp:exodus:deletion-eligibility:wave-google-drive-001",
+  "kind": "DeletionEligibilityRecord",
+  "specVersion": "0.1.0",
+  "recordId": "deletion-eligibility-google-drive-001",
+  "provider": "google",
+  "migrationWaveId": "wave-google-drive-001",
+  "sourceSurface": "google-drive",
+  "eligibilityStatus": "cooling-off",
+  "evaluatedAtUtc": "2026-05-05T18:40:00Z",
+  "checks": {
+    "rawCustodyComplete": true,
+    "sourceAliasesPreserved": true,
+    "mirrorParityPassed": true,
+    "manifestParityPassed": true,
+    "blockedObjectsResolved": true,
+    "redactionReviewComplete": true,
+    "proofPackGenerated": true,
+    "coolingOffComplete": false
+  },
+  "proofPackRef": "urn:sp:exodus:proof-pack-summary:proof-pack-google-drive-001",
+  "sourceAliasReportRef": "urn:sp:exodus:source-alias-report:wave-google-drive-001",
+  "blockedObjectReportRef": "urn:sp:exodus:blocked-object-report:wave-google-drive-001",
+  "redactionReviewRef": "urn:sp:exodus:redaction-review:chatgpt-conversation-001",
+  "coolingOffEndsAtUtc": "2026-06-04T18:40:00Z",
+  "decisionReason": "All proof checks passed, but cooling-off window is still active.",
+  "nextAction": "Wait for cooling-off completion before marking source objects deletion-eligible."
+}

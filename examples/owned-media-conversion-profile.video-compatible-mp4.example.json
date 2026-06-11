@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.socioprophet.ai/exodus/0.1.0/owned-media-conversion-profile.schema.json",
+  "id": "urn:sp:exodus:owned-media-conversion-profile:video-compatible-mp4",
+  "kind": "OwnedMediaConversionProfile",
+  "specVersion": "0.1.0",
+  "profileName": "video-compatible-mp4",
+  "mediaKind": "video",
+  "rawCustodyRequired": true,
+  "attestationRequired": true,
+  "distributionClearanceRequired": false,
+  "preferredAction": "remux",
+  "targetContainer": "mp4",
+  "targetCodec": "copy-compatible-or-policy-selected",
+  "metadataSidecar": "json",
+  "subtitleTarget": "srt-or-webvtt",
+  "budgetClass": "playback-ready",
+  "failureStates": ["metadata-only", "blocked-access-control", "blocked-unsupported-format", "blocked-storage-budget", "failed-tool-error"],
+  "notes": "Use for broad playback compatibility. Copy compatible streams first; transcode only when policy requires it.",
+  "updatedAtUtc": "2026-05-05T13:48:00Z"
+}

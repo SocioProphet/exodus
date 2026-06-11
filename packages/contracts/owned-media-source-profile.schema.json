@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.ai/exodus/0.1.0/owned-media-source-profile.schema.json",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "specVersion",
+    "provider",
+    "surface",
+    "mediaKinds",
+    "ingestMethods",
+    "preserveRawFirst",
+    "drmPolicy",
+    "updatedAtUtc"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "kind": { "const": "OwnedMediaSourceProfile" },
+    "specVersion": { "type": "string", "pattern": "^0\\.1\\.\\d+$" },
+    "provider": { "type": "string" },
+    "surface": { "type": "string" },
+    "mediaKinds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["music", "video", "voice-memo", "home-movie", "playlist", "podcast-archive", "photo-video", "other"]
+      },
+      "minItems": 1
+    },
+    "ingestMethods": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["local-library", "takeout-export", "cloud-drive", "photos-export", "device-export", "archive-folder", "nas-export", "external-disk", "metadata-only"]
+      },
+      "minItems": 1
+    },
+    "preferredTargets": {
+      "type": "object",
+      "properties": {
+        "audioArchival": { "type": "string" },
+        "audioPortable": { "type": "string" },
+        "videoArchivalContainer": { "type": "string" },
+        "videoCompatibilityContainer": { "type": "string" },
+        "metadataSidecar": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "expectedMetadata": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "preserveRawFirst": { "type": "boolean" },
+    "drmPolicy": {
+      "type": "string",
+      "enum": ["blocked-or-metadata-only", "authorized-export-only"]
+    },
+    "notes": { "type": "string" },
+    "updatedAtUtc": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

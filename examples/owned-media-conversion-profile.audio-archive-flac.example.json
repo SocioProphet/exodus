@@ -1,0 +1,18 @@
+{
+  "id": "urn:sp:exodus:owned-media-conversion-profile:audio-archive-flac",
+  "kind": "OwnedMediaConversionProfile",
+  "specVersion": "0.1.0",
+  "profileName": "audio-archive-flac",
+  "mediaKind": "audio",
+  "rawCustodyRequired": true,
+  "attestationRequired": true,
+  "distributionClearanceRequired": false,
+  "preferredAction": "transcode",
+  "targetContainer": "flac",
+  "targetCodec": "flac",
+  "metadataSidecar": "json",
+  "budgetClass": "archive-plus-portable",
+  "failureStates": ["metadata-only", "blocked-access-control", "failed-tool-error"],
+  "notes": "Use for lossless or high-value audio. Do not up-convert lossy sources to pretend lossless custody.",
+  "updatedAtUtc": "2026-05-05T13:45:00Z"
+}

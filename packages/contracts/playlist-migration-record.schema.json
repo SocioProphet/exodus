@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.ai/exodus/0.1.0/playlist-migration-record.schema.json",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "specVersion",
+    "provider",
+    "playlistId",
+    "title",
+    "playlistType",
+    "rawEvidenceRef",
+    "entries",
+    "generatedAtUtc"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "kind": { "const": "PlaylistMigrationRecord" },
+    "specVersion": { "type": "string", "pattern": "^0\\.1\\.\\d+$" },
+    "provider": { "type": "string" },
+    "playlistId": { "type": "string" },
+    "title": { "type": "string" },
+    "playlistType": {
+      "type": "string",
+      "enum": ["music", "video", "mixed", "folder-derived", "unknown"]
+    },
+    "sourceLocator": { "type": "string" },
+    "rawEvidenceRef": { "type": "string" },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["position", "entryStatus", "originalLocator"],
+        "properties": {
+          "position": { "type": "integer", "minimum": 0 },
+          "entryStatus": {
+            "type": "string",
+            "enum": ["resolved", "missing-source", "duplicate-preserved", "blocked-access-control", "metadata-only", "unsupported", "pending"]
+          },
+          "originalLocator": { "type": "string" },
+          "canonicalBlobRef": { "type": "string" },
+          "title": { "type": "string" },
+          "artistOrCreator": { "type": "string" },
+          "durationSeconds": { "type": "number", "minimum": 0 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "outputPlaylistRefs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "unresolvedEntryCount": { "type": "integer", "minimum": 0 },
+    "duplicateEntryCount": { "type": "integer", "minimum": 0 },
+    "proofPackRef": { "type": "string" },
+    "notes": { "type": "string" },
+    "generatedAtUtc": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

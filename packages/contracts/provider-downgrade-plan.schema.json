@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.ai/exodus/0.1.0/provider-downgrade-plan.schema.json",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "specVersion",
+    "planId",
+    "provider",
+    "currentState",
+    "targetState",
+    "planStatus",
+    "createdAtUtc",
+    "steps"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "kind": { "const": "ProviderDowngradePlan" },
+    "specVersion": { "type": "string", "pattern": "^0\\.1\\.\\d+$" },
+    "planId": { "type": "string" },
+    "provider": { "type": "string" },
+    "currentState": { "type": "string" },
+    "targetState": { "type": "string" },
+    "planStatus": {
+      "type": "string",
+      "enum": ["draft", "ready", "blocked", "in-progress", "completed", "cancelled"]
+    },
+    "createdAtUtc": { "type": "string", "format": "date-time" },
+    "eligibilityRefs": { "type": "array", "items": { "type": "string" } },
+    "proofPackRefs": { "type": "array", "items": { "type": "string" } },
+    "riskSummary": {
+      "type": "object",
+      "properties": {
+        "dataLossRisk": { "type": "string", "enum": ["low", "medium", "high", "unknown"] },
+        "accountLockoutRisk": { "type": "string", "enum": ["low", "medium", "high", "unknown"] },
+        "workflowBreakageRisk": { "type": "string", "enum": ["low", "medium", "high", "unknown"] }
+      },
+      "additionalProperties": false
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["stepId", "description", "status"],
+        "properties": {
+          "stepId": { "type": "string" },
+          "description": { "type": "string" },
+          "status": { "type": "string", "enum": ["pending", "ready", "blocked", "done", "skipped"] },
+          "evidenceRef": { "type": "string" },
+          "blockerRef": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.ai/exodus/0.1.0/evidence-dashboard-state.schema.json",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "specVersion",
+    "provider",
+    "migrationWaveId",
+    "state",
+    "metrics",
+    "updatedAtUtc"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "kind": { "const": "EvidenceDashboardState" },
+    "specVersion": { "type": "string", "pattern": "^0\\.1\\.\\d+$" },
+    "provider": { "type": "string" },
+    "migrationWaveId": { "type": "string" },
+    "state": {
+      "type": "string",
+      "enum": [
+        "discovered",
+        "planned",
+        "landing",
+        "landed",
+        "deduped",
+        "processing",
+        "validated",
+        "blocked",
+        "proof-ready",
+        "cooling-off",
+        "deletion-eligible"
+      ]
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "migratedBlobCount",
+        "migratedUniqueBytes",
+        "duplicateBytesEliminated",
+        "sourceAliasesPreserved",
+        "blockedObjects",
+        "proofPacksGenerated"
+      ],
+      "properties": {
+        "exitReadinessIndex": { "type": "number", "minimum": 0, "maximum": 100 },
+        "providerControlSurfaceScore": { "type": "number", "minimum": 0, "maximum": 100 },
+        "migratedBlobCount": { "type": "integer", "minimum": 0 },
+        "migratedUniqueBytes": { "type": "integer", "minimum": 0 },
+        "duplicateBytesEliminated": { "type": "integer", "minimum": 0 },
+        "sourceAliasesPreserved": { "type": "integer", "minimum": 0 },
+        "blockedObjects": { "type": "integer", "minimum": 0 },
+        "openFormatConversions": { "type": "integer", "minimum": 0 },
+        "proofPacksGenerated": { "type": "integer", "minimum": 0 },
+        "deletionEligibleSourceObjects": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "message", "severity"],
+        "properties": {
+          "code": { "type": "string" },
+          "message": { "type": "string" },
+          "severity": { "type": "string", "enum": ["info", "warn", "error"] }
+        },
+        "additionalProperties": false
+      }
+    },
+    "nextActions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "updatedAtUtc": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

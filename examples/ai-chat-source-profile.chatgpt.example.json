@@ -1,0 +1,20 @@
+{
+  "id": "urn:sp:exodus:ai-chat-source-profile:chatgpt",
+  "kind": "AIChatSourceProfile",
+  "specVersion": "0.1.0",
+  "provider": "openai",
+  "surface": "chatgpt",
+  "ingestMethods": ["data-export", "archive-folder", "html-export", "json-export"],
+  "expectedArtifacts": [
+    "conversation-history",
+    "message-tree-or-message-list",
+    "attachments-or-generated-files",
+    "shared-link-context-where-available",
+    "account-export-metadata"
+  ],
+  "preserveRawFirst": true,
+  "attachmentsExpected": true,
+  "requiresRedactionReview": true,
+  "notes": "ChatGPT/OpenAI export is treated as an ingress archive for conversation-as-document migration.",
+  "updatedAtUtc": "2026-05-05T15:40:00Z"
+}

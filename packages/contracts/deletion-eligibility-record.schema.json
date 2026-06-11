@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.ai/exodus/0.1.0/deletion-eligibility-record.schema.json",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "specVersion",
+    "recordId",
+    "provider",
+    "migrationWaveId",
+    "eligibilityStatus",
+    "evaluatedAtUtc",
+    "checks"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "kind": { "const": "DeletionEligibilityRecord" },
+    "specVersion": { "type": "string", "pattern": "^0\\.1\\.\\d+$" },
+    "recordId": { "type": "string" },
+    "provider": { "type": "string" },
+    "migrationWaveId": { "type": "string" },
+    "sourceSurface": { "type": "string" },
+    "eligibilityStatus": {
+      "type": "string",
+      "enum": ["eligible", "not-eligible", "cooling-off", "blocked", "unknown"]
+    },
+    "evaluatedAtUtc": { "type": "string", "format": "date-time" },
+    "checks": {
+      "type": "object",
+      "required": [
+        "rawCustodyComplete",
+        "sourceAliasesPreserved",
+        "mirrorParityPassed",
+        "manifestParityPassed",
+        "blockedObjectsResolved",
+        "redactionReviewComplete",
+        "proofPackGenerated",
+        "coolingOffComplete"
+      ],
+      "properties": {
+        "rawCustodyComplete": { "type": "boolean" },
+        "sourceAliasesPreserved": { "type": "boolean" },
+        "mirrorParityPassed": { "type": "boolean" },
+        "manifestParityPassed": { "type": "boolean" },
+        "blockedObjectsResolved": { "type": "boolean" },
+        "redactionReviewComplete": { "type": "boolean" },
+        "proofPackGenerated": { "type": "boolean" },
+        "coolingOffComplete": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "proofPackRef": { "type": "string" },
+    "sourceAliasReportRef": { "type": "string" },
+    "blockedObjectReportRef": { "type": "string" },
+    "redactionReviewRef": { "type": "string" },
+    "coolingOffEndsAtUtc": { "type": "string", "format": "date-time" },
+    "decisionReason": { "type": "string" },
+    "nextAction": { "type": "string" }
+  },
+  "additionalProperties": false
+}

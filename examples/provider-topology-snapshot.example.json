@@ -1,0 +1,39 @@
+{
+  "id": "urn:sp:exodus:provider-topology-snapshot:google-001",
+  "kind": "ProviderTopologySnapshot",
+  "specVersion": "0.1.0",
+  "provider": "google",
+  "snapshotId": "google-001",
+  "discoveredAtUtc": "2026-05-05T17:20:00Z",
+  "accounts": [
+    {
+      "accountRef": "urn:sp:exodus:account:google-primary",
+      "accountType": "personal",
+      "status": "active"
+    }
+  ],
+  "surfaces": [
+    {
+      "surfaceId": "google-drive",
+      "surfaceType": "cloud-drive",
+      "objectEstimate": 1500,
+      "byteEstimate": 1073741824,
+      "discoveryStatus": "discovered"
+    },
+    {
+      "surfaceId": "google-keep",
+      "surfaceType": "notes",
+      "objectEstimate": 240,
+      "byteEstimate": 10485760,
+      "discoveryStatus": "partial",
+      "blockerRefs": ["urn:sp:exodus:blocker:takeout-refresh-needed"]
+    }
+  ],
+  "exportMethods": ["takeout-export", "rclone-drive"],
+  "confidence": {
+    "score": 0.76,
+    "gaps": ["Google Photos estimate pending", "Keep attachment inventory partial"]
+  },
+  "evidenceRefs": ["urn:sp:evidence:acquisition:RUN0001"],
+  "notes": "Initial provider topology snapshot for Google exit planning."
+}

@@ -1,0 +1,24 @@
+{
+  "id": "urn:sp:exodus:blocked-object-report:wave-google-drive-001",
+  "kind": "BlockedObjectReport",
+  "specVersion": "0.1.0",
+  "reportId": "blocked-object-report-google-drive-001",
+  "migrationWaveId": "wave-google-drive-001",
+  "generatedAtUtc": "2026-05-05T17:30:00Z",
+  "blockedObjects": [
+    {
+      "sourceLocator": "gdrive:/Case/LockedMedia.mov",
+      "canonicalBlobRef": "urn:sp:evidence:blob:sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "provider": "google",
+      "surface": "google-drive",
+      "blockerCode": "ACCESS_CONTROL_LIMITED",
+      "severity": "warn",
+      "message": "Object requires metadata-only handling until an authorized export path is available.",
+      "nextAction": "request alternate export or mark metadata-only",
+      "metadataOnly": true
+    }
+  ],
+  "blockedCount": 1,
+  "metadataOnlyCount": 1,
+  "notes": "Blocked object remains visible and proof-pack eligible as metadata-only."
+}

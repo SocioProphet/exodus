@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.ai/exodus/0.1.0/ai-chat-conversation-document.schema.json",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "specVersion",
+    "provider",
+    "conversationId",
+    "title",
+    "messageCount",
+    "rawEvidenceRefs",
+    "documentDerivatives",
+    "updatedAtUtc"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "kind": { "const": "AIChatConversationDocument" },
+    "specVersion": { "type": "string", "pattern": "^0\\.1\\.\\d+$" },
+    "provider": { "type": "string" },
+    "conversationId": { "type": "string" },
+    "title": { "type": "string" },
+    "createdAtUtc": { "type": "string", "format": "date-time" },
+    "updatedAtUtc": { "type": "string", "format": "date-time" },
+    "participantRoles": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "messageCount": { "type": "integer", "minimum": 0 },
+    "characterCount": { "type": "integer", "minimum": 0 },
+    "attachmentRefs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "rawEvidenceRefs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "documentDerivatives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["format", "ref"],
+        "properties": {
+          "format": { "type": "string", "enum": ["markdown", "json", "jsonl", "html", "pdf", "chunk-manifest"] },
+          "ref": { "type": "string" }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "redactionStatus": {
+      "type": "string",
+      "enum": ["raw-private", "redacted", "review-required", "safe-for-export", "blocked"]
+    },
+    "searchStatus": {
+      "type": "string",
+      "enum": ["not-indexed", "queued", "indexed", "blocked"]
+    },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

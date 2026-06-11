@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.ai/exodus/0.1.0/owned-media-attestation-record.schema.json",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "specVersion",
+    "mediaRef",
+    "attestingSubjectRef",
+    "attestationScope",
+    "attestationStatus",
+    "privateUseAllowed",
+    "localDerivativeAllowed",
+    "publicDistributionStatus",
+    "attestedAtUtc"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "kind": { "const": "OwnedMediaAttestationRecord" },
+    "specVersion": { "type": "string", "pattern": "^0\\.1\\.\\d+$" },
+    "mediaRef": { "type": "string" },
+    "sourceProfileRef": { "type": "string" },
+    "acquisitionRunRef": { "type": "string" },
+    "attestingSubjectRef": { "type": "string" },
+    "attestationScope": {
+      "type": "string",
+      "enum": ["personal-use", "creator-owned", "licensed-use", "public-domain", "open-license", "distribution-cleared", "unknown"]
+    },
+    "attestationStatus": {
+      "type": "string",
+      "enum": ["required", "captured", "rejected", "insufficient", "superseded"]
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "contextRefs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "privateUseAllowed": { "type": "boolean" },
+    "localDerivativeAllowed": { "type": "boolean" },
+    "publicDistributionStatus": {
+      "type": "string",
+      "enum": ["blocked", "separate-clearance-required", "cleared", "not-applicable"]
+    },
+    "accessControlStatus": {
+      "type": "string",
+      "enum": ["none-observed", "metadata-only", "blocked", "unknown"]
+    },
+    "attestationTextDigest": { "type": "string" },
+    "notes": { "type": "string" },
+    "attestedAtUtc": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

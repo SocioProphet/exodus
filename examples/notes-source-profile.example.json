@@ -1,0 +1,23 @@
+{
+  "id": "urn:sp:exodus:notes-source-profile:google-keep",
+  "kind": "NotesSourceProfile",
+  "specVersion": "0.1.0",
+  "provider": "google",
+  "surface": "google-keep",
+  "ingestMethods": ["takeout-export", "html-export", "json-export"],
+  "expectedMetadata": [
+    "title",
+    "body-text",
+    "labels",
+    "pinned-state",
+    "archived-state",
+    "attachment-refs",
+    "created-time",
+    "modified-time"
+  ],
+  "attachmentSupport": true,
+  "collaborationMetadata": false,
+  "preserveRawFirst": true,
+  "notes": "Google Keep is the first-pass Google notes equivalent for Exodus support.",
+  "updatedAtUtc": "2026-05-05T05:25:00Z"
+}

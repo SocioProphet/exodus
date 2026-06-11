@@ -1,0 +1,24 @@
+{
+  "id": "urn:sp:exodus:conversion-receipt:audio-opus-001",
+  "kind": "ConversionReceipt",
+  "specVersion": "0.1.0",
+  "receiptId": "audio-opus-001",
+  "migrationWaveId": "wave-owned-media-001",
+  "sourceBlobRef": "urn:sp:evidence:blob:sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "outputBlobRef": "urn:sp:evidence:blob:sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "profileRef": "urn:sp:exodus:owned-media-conversion-profile:audio-portable-opus",
+  "action": "transcode",
+  "status": "succeeded",
+  "tool": {
+    "name": "ffmpeg",
+    "version": "policy-pinned",
+    "configDigest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  },
+  "inputDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "outputDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "metadataSidecarRef": "urn:sp:exodus:media-sidecar:audio-opus-001-json",
+  "rawCustodyPreserved": true,
+  "attestationRef": "urn:sp:exodus:owned-media-attestation:local-track-001",
+  "notes": "Raw source preserved; portable playback derivative generated after attestation.",
+  "generatedAtUtc": "2026-05-05T18:10:00Z"
+}
