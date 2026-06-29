@@ -14,6 +14,8 @@ jobs:
         run: python3 scripts/validate_examples.py
       - name: Validate Phase 0 metadata schemas
         run: python3 scripts/validate_phase0_schemas.py
+      - name: Enforce zone-gate engine (CHK-01..CHK-10)
+        run: python3 scripts/test_exodus_gate.py
       - name: Validate synthetic intake path
         run: python3 scripts/validate_intake_fixture.py
       - name: Validate synthetic Exodus workroom demo

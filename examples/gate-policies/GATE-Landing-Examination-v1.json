@@ -1,0 +1,19 @@
+{
+  "policy_id": "GATE-Landing-Examination-v1",
+  "from_zone": "Landing",
+  "to_zone": "Examination",
+  "applies_to_classes": ["*"],
+  "required_fields": ["artifact_id", "exhibit_id", "hash_blake3", "hash_sha256", "source_account", "observed_at_micros"],
+  "required_checks": [
+    {"check_id": "CHK-01", "name": "IntegrityVerification", "failure_action": "Set custody_status=IntegrityViolation; block promotion; alert custodian"},
+    {"check_id": "CHK-03", "name": "ExhibitIdUniqueness", "failure_action": "Reject; return error"},
+    {"check_id": "CHK-09", "name": "SourceAccountRegistered", "failure_action": "Block intake; require account registration"},
+    {"check_id": "CHK-10", "name": "HashAlgorithmCompliance", "failure_action": "Block all zone transitions beyond Landing"},
+    {"check_id": "CHK-08", "name": "DuplicateDetection", "failure_action": "Flag as Duplicate; require analyst acknowledgment", "blocking": false}
+  ],
+  "human_review_required": false,
+  "legal_review_required": false,
+  "policy_version": 1,
+  "effective_from_txn": "txn-0",
+  "status": "Active"
+}
