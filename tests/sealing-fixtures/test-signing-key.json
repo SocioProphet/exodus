@@ -1,0 +1,7 @@
+{
+  "_warning": "SYNTHETIC TEST KEY \u2014 not a production custody key",
+  "key_id": "exodus-test-key-001",
+  "signer_id": "exodus-seal-test",
+  "private_key_ed25519": "c7bf169e682731039f2c396531a73b35cd34f6961d744b8fc2def60cef508ffd",
+  "public_key_ed25519": "82225f50b38261dc8577d26270b13306f2febfb0444125183b1bb9980a6bad8a"
+}

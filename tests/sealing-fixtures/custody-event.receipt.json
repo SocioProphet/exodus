@@ -1,0 +1,11 @@
+{
+  "canonicalization_spec": "CANON-v0.1",
+  "frame_hash": "48488a721e90ef659fcdf93fae972a0c1671f4573ed520d8a2b5d51b76f94d98",
+  "frame_hash_algo": "BLAKE3-256",
+  "key_id": "exodus-test-key-001",
+  "public_key_ed25519": "82225f50b38261dc8577d26270b13306f2febfb0444125183b1bb9980a6bad8a",
+  "receipt_type": "BEACON_COMMIT",
+  "sealed_at_micros": 1780000000500000,
+  "signature_ed25519": "dc0d2c3fcea8020f1c427fdfa5b3dd216df912b72ff954c050ff623e869b396009b4742808a8d39252d074e194bdcc07173732ae5e669a5bdadba00d2ccdd40f",
+  "signer_id": "exodus-seal-test"
+}

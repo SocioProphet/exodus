@@ -1,0 +1,8 @@
+{
+  "registry_version": 1,
+  "accounts": [
+    {"account": "michael@socioprophet.ai", "platform": "GoogleDrive", "owner": "M.D. Heller", "registered_at": "2026-06-02T00:00:00Z", "status": "active"},
+    {"account": "mdheller@gmail.com", "platform": "GmailThread", "owner": "M.D. Heller", "registered_at": "2026-06-02T00:00:00Z", "status": "active"},
+    {"account": "mdheller314@icloud.com", "platform": "iCloudDrive", "owner": "M.D. Heller", "registered_at": "2026-06-02T00:00:00Z", "status": "active"}
+  ]
+}

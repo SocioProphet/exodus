@@ -1,0 +1,12 @@
+{
+  "actor_id": "exodus-examine-v0.1.0",
+  "actor_type": "IntakeProcess",
+  "artifact_id": "018f3f72-6b79-7c35-8f7d-4a3a7d2d0001",
+  "custody_status": "Intact",
+  "event_id": "018f3f72-6b79-7c35-8f7d-4a3a7d2d1001",
+  "event_type": "ZonePromotion",
+  "hash_at_event": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "timestamp_micros": 1780000000500000,
+  "zone_from": "Landing",
+  "zone_to": "Examination"
+}

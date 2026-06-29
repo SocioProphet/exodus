@@ -18,8 +18,14 @@ jobs:
         run: python3 scripts/validate_intake_fixture.py
       - name: Validate synthetic Exodus workroom demo
         run: python3 scripts/validate_exodus_demo.py
+      - name: Intake adapters (account registry + BSM/AC-09)
+        run: python3 scripts/test_intake_adapters.py
+      - name: Install sealing crypto deps
+        run: python3 -m pip install --quiet cryptography blake3
+      - name: Forensic sealing + ForensicBundle replay harness (FRE 902(14))
+        run: python3 scripts/test_exodus_seal.py
       - name: Compile intake, demo, and benchmark scripts
-        run: python3 -m py_compile scripts/exodus_intake.py scripts/validate_intake_fixture.py scripts/validate_exodus_demo.py packages/processing/benchmarks/deterministic_vs_hnet/run_benchmark.py packages/processing/benchmarks/deterministic_vs_hnet/score_run.py
+        run: python3 -m py_compile scripts/exodus_intake.py scripts/exodus_seal.py scripts/exodus_bundle.py scripts/bsm_intake.py scripts/account_registry.py scripts/validate_intake_fixture.py scripts/validate_exodus_demo.py packages/processing/benchmarks/deterministic_vs_hnet/run_benchmark.py packages/processing/benchmarks/deterministic_vs_hnet/score_run.py
       - name: Check critical docs exist
         run: |
           test -f docs/phases.md
