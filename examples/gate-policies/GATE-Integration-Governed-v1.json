@@ -1,0 +1,17 @@
+{
+  "policy_id": "GATE-Integration-Governed-v1",
+  "from_zone": "Integration",
+  "to_zone": "Governed",
+  "applies_to_classes": ["*"],
+  "required_fields": ["security_label", "witness_retention"],
+  "required_checks": [
+    {"check_id": "CHK-01", "name": "IntegrityVerification", "failure_action": "Set custody_status=IntegrityViolation; block promotion; alert custodian"},
+    {"check_id": "CHK-06", "name": "SecurityLabelSet", "failure_action": "Block promotion to Governed"},
+    {"check_id": "CHK-07", "name": "WitnessRetentionSet", "failure_action": "Block promotion to Governed"}
+  ],
+  "human_review_required": true,
+  "legal_review_required": true,
+  "policy_version": 1,
+  "effective_from_txn": "txn-0",
+  "status": "Active"
+}

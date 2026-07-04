@@ -1,0 +1,18 @@
+{
+  "policy_id": "GATE-Examination-Integration-v1",
+  "from_zone": "Examination",
+  "to_zone": "Integration",
+  "applies_to_classes": ["*"],
+  "required_fields": ["evidence_grade", "counter_explanations"],
+  "required_checks": [
+    {"check_id": "CHK-01", "name": "IntegrityVerification", "failure_action": "Set custody_status=IntegrityViolation; block promotion; alert custodian"},
+    {"check_id": "CHK-02", "name": "TemporalConsistency", "failure_action": "Require analyst review; flag in classification block"},
+    {"check_id": "CHK-04", "name": "CounterExplanationPresent", "failure_action": "Block promotion to Integration; require analyst to populate"},
+    {"check_id": "CHK-05", "name": "NullHypothesisDefined", "failure_action": "Block promotion to Integration"}
+  ],
+  "human_review_required": false,
+  "legal_review_required": false,
+  "policy_version": 1,
+  "effective_from_txn": "txn-0",
+  "status": "Active"
+}
