@@ -1,5 +1,5 @@
 <record version="11" event="open(2)" modifier="0" time="1751025600" msec="120">
-  <path>/Users/mdheller/Library/Mail/secret.eml</path>
+  <path>/Users/synthetic/Library/Mail/synthetic.eml</path>
   <subject audit-uid="501" uid="501" gid="20" ruid="501" rgid="20" pid="4310" sid="100" tid="0 0.0.0.0"/>
   <return errval="success" retval="5"/>
 </record>

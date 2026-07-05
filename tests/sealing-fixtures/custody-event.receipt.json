@@ -3,9 +3,9 @@
   "frame_hash": "48488a721e90ef659fcdf93fae972a0c1671f4573ed520d8a2b5d51b76f94d98",
   "frame_hash_algo": "BLAKE3-256",
   "key_id": "exodus-test-key-001",
-  "public_key_ed25519": "82225f50b38261dc8577d26270b13306f2febfb0444125183b1bb9980a6bad8a",
+  "public_key_ed25519": "0c9fe2669d36ac3b8c98025de5242f6a823dfa044d4493023cb770f791fbc1d5",
   "receipt_type": "BEACON_COMMIT",
   "sealed_at_micros": 1780000000500000,
-  "signature_ed25519": "dc0d2c3fcea8020f1c427fdfa5b3dd216df912b72ff954c050ff623e869b396009b4742808a8d39252d074e194bdcc07173732ae5e669a5bdadba00d2ccdd40f",
+  "signature_ed25519": "3ddb3c0b33456d11068fa5762a8b744965b2d87cb06b25006da40bf5d5de898ad5038a89652f37a62ec0bc9ef9c245648faa7c790fc0c02b925fed054a87b601",
   "signer_id": "exodus-seal-test"
 }

@@ -16,8 +16,8 @@ ROOT = Path(__file__).resolve().parents[1]
 def test_account_registry_active_only() -> None:
     reg = load_registry()  # default examples/account-registry.json
     accts = registered_accounts(reg)
-    assert "michael@socioprophet.ai" in accts
-    assert is_registered(reg, "mdheller@gmail.com")
+    assert "operator@example.org" in accts
+    assert is_registered(reg, "owner.personal@example.com")
     assert not is_registered(reg, "stranger@example.com")
 
 
@@ -37,7 +37,7 @@ def test_bsm_parses_records_and_paths() -> None:
     assert e["record_count"] == 3
     # file access timeline picks up the mail path
     paths = [a["path"] for a in e["file_access_timeline"]]
-    assert "/Users/mdheller/Library/Mail/secret.eml" in paths
+    assert "/Users/synthetic/Library/Mail/synthetic.eml" in paths
     # timeline is time-ordered
     times = [a["time_micros"] for a in e["file_access_timeline"]]
     assert times == sorted(times)

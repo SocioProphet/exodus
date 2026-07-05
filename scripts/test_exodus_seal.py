@@ -19,7 +19,14 @@ import exodus_bundle as bundle
 
 ROOT = Path(__file__).resolve().parents[1]
 FX = ROOT / "tests/sealing-fixtures"
-KEY = json.loads((FX / "test-signing-key.json").read_text())
+# The signing key is DERIVED from a committed seed at runtime — no private key is
+# committed to the repo. Derivation: private_key_ed25519 = sha256(seed).
+import hashlib
+_SEED = json.loads((FX / "test-signing-seed.json").read_text())
+KEY = {
+    "private_key_ed25519": hashlib.sha256(_SEED["seed"].encode("utf-8")).hexdigest(),
+    "public_key_ed25519": _SEED["public_key_ed25519"],
+}
 EVENT = json.loads((FX / "custody-event.input.json").read_text())
 RECEIPT = json.loads((FX / "custody-event.receipt.json").read_text())
 BUNDLE = json.loads((FX / "forensic-bundle.json").read_text())
