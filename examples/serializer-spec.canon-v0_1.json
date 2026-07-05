@@ -1,0 +1,11 @@
+{
+  "serializer_spec_id": "SERIALIZER-exodus-v1",
+  "serializer_version": "exodus-seal 0.1.0",
+  "canonicalization_spec": "CANON-v0.1",
+  "encoding": "json-canonical",
+  "deterministic": true,
+  "hash_input_definition": "UTF-8 bytes of the record serialized as JSON with lexicographically sorted object keys and no insignificant whitespace (separators ',' and ':'). Independently reproducible by any RFC 8259 JSON encoder applying the same key ordering.",
+  "tool_name": "exodus-seal",
+  "tool_version": "0.1.0",
+  "status": "Active"
+}

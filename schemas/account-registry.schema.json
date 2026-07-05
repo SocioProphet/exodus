@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.socioprophet.ai/exodus/account-registry.v0.1.json",
+  "title": "Exodus Account Registry v0.1",
+  "description": "Registry of source accounts authorized for intake. CHK-09 (SourceAccountRegistered) passes only for accounts listed here with status=active.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["registry_version", "accounts"],
+  "properties": {
+    "registry_version": {"type": "integer", "minimum": 1},
+    "accounts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["account", "platform", "owner", "status"],
+        "properties": {
+          "account": {"type": "string", "minLength": 1},
+          "platform": {"enum": ["GoogleDrive", "GmailThread", "iCloudDrive", "LocalFilesystem", "AppleDataArchive", "TerminalSession", "BrowserConsole", "NetworkCapture", "Other"]},
+          "owner": {"type": "string", "minLength": 1},
+          "registered_at": {"type": "string"},
+          "status": {"enum": ["active", "revoked"]}
+        }
+      }
+    }
+  }
+}

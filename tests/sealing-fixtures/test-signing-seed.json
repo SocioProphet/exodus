@@ -1,0 +1,8 @@
+{
+  "_warning": "SYNTHETIC TEST SEED \u2014 the signing key is DERIVED at test runtime as sha256(seed). No production or custody key is committed.",
+  "key_id": "exodus-test-key-001",
+  "signer_id": "exodus-seal-test",
+  "seed": "exodus-synthetic-test-seed-v1",
+  "derivation": "private_key_ed25519 = sha256(seed).hexdigest()",
+  "public_key_ed25519": "0c9fe2669d36ac3b8c98025de5242f6a823dfa044d4493023cb770f791fbc1d5"
+}

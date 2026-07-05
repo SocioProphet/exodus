@@ -1,0 +1,26 @@
+{
+  "registry_version": 1,
+  "accounts": [
+    {
+      "account": "operator@example.org",
+      "platform": "GoogleDrive",
+      "owner": "Synthetic Owner",
+      "registered_at": "2026-06-02T00:00:00Z",
+      "status": "active"
+    },
+    {
+      "account": "owner.personal@example.com",
+      "platform": "GmailThread",
+      "owner": "Synthetic Owner",
+      "registered_at": "2026-06-02T00:00:00Z",
+      "status": "active"
+    },
+    {
+      "account": "owner@example-icloud.test",
+      "platform": "iCloudDrive",
+      "owner": "Synthetic Owner",
+      "registered_at": "2026-06-02T00:00:00Z",
+      "status": "active"
+    }
+  ]
+}
