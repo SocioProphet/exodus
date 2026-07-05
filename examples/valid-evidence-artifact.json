@@ -2,7 +2,7 @@
   "artifact_id": "018f3f72-6b79-7c35-8f7d-4a3a7d2d0001",
   "corpus_id": "SP-FORENSICS-2026",
   "exhibit_id": "AF-0001",
-  "original_filename": "console faults.rtf",
+  "original_filename": "synthetic-console-log.rtf",
   "mime_type": "text/rtf",
   "file_size_bytes": 1024,
   "artifact_class": "ConsolePaste",
@@ -31,10 +31,18 @@
   "chain_of_trust": [],
   "evidence_class": "Primary",
   "evidence_grade": "E3",
-  "layer_citations": ["L07-Identity"],
-  "hypothesis_ids": ["HYP-FIXTURE-001"],
-  "null_hypothesis_ids": ["NULL-FIXTURE-001"],
-  "counter_explanations": ["Synthetic fixture, not real evidence."],
+  "layer_citations": [
+    "L07-Identity"
+  ],
+  "hypothesis_ids": [
+    "HYP-FIXTURE-001"
+  ],
+  "null_hypothesis_ids": [
+    "NULL-FIXTURE-001"
+  ],
+  "counter_explanations": [
+    "Synthetic fixture, not real evidence."
+  ],
   "security_label": "Internal",
   "witness_retention": "LocalOnly",
   "owning_zone": "Landing",
